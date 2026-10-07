@@ -2,7 +2,7 @@
 
 - Họ và tên: Hà Thị Mỹ Linh
 - MSSV / mã học viên: 2A202602619
-- Lớp: AI20K Cohort 4 — L3B
+- Lớp: K04-L34-P2 · Track 1: AI Product Management
 - Ngành đã chọn: **Y tế (Healthcare)** — trọng tâm là AI tư vấn sức khỏe/dinh dưỡng và AI hỗ trợ quyết định lâm sàng. Đây cũng là ngành của dự án nhóm **P-110 — AI Nutrition Agent** (tư vấn dinh dưỡng cho bệnh nhân tiểu đường, bệnh thận mạn, tim mạch, gout).
 
 > **Quy ước ghi chú:** 📌 **[Sự kiện]** = thông tin đã được nguồn công bố (có link). 💭 **[Nhận định]** = phân tích hoặc suy luận của tôi, **không** phải hậu quả đã được ghi nhận.
