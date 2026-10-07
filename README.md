@@ -24,29 +24,28 @@
 
 #### Brief Case
 
-- **Tổ chức / sản phẩm AI:** National Eating Disorders Association (NEDA), tổ chức phi lợi nhuận về rối loạn ăn uống của Mỹ. Chatbot *Tessa* ban đầu là chatbot **theo kịch bản (rule-based)** do các chuyên gia rối loạn ăn uống (Dr. Barr Taylor, Dr. Ellen Fitzsimmons-Craft) xây dựng nội dung; công ty **Cass** vận hành nền tảng.
+- **Tổ chức / sản phẩm AI:** National Eating Disorders Association (NEDA), tổ chức phi lợi nhuận về rối loạn ăn uống của Mỹ. Chatbot *Tessa* ban đầu là chatbot **theo kịch bản (rule-based)**, nội dung do nhóm nghiên cứu của Dr. Ellen Fitzsimmons-Craft xây dựng; công ty **Cass** vận hành nền tảng.
 - **Thời gian, địa điểm / bối cảnh:** Mỹ, 2022–2023.
-  - Tessa ra mắt lặng lẽ từ **02/2022**.
-  - Ngày **31/03/2023**, NEDA báo cho nhân viên đường dây nóng rằng họ sẽ bị cho nghỉ việc. Theo kế hoạch, Tessa thay thế đường dây nóng do người trực từ khoảng **01/06/2023**.
+  - Tessa ra mắt lặng lẽ từ **02/2022** (CNN).
+  - Ngày **31/03/2023**, NEDA báo cho nhân viên đường dây nóng rằng vị trí của họ sẽ bị cắt vào tháng 6; Tessa được định thay thế đường dây nóng do người trực (NPR/WHYY).
 - **AI được dùng để làm gì:** trợ lý sức khỏe dạng chatbot, cung cấp nội dung phòng ngừa rối loạn ăn uống và hỗ trợ người có nguy cơ.
 - **Vấn đề hoặc sự kiện đáng chú ý:**
-  - Cuối 05/2023, chuyên gia tư vấn **Sharon Maxwell** thử Tessa và được khuyên **giảm cân, đếm calo, tạo thâm hụt calo**, tức là những hành vi có thể làm rối loạn ăn uống nặng hơn.
-  - NEDA **vô hiệu hóa Tessa vô thời hạn ngày 30/05/2023**.
-  - Theo NPR, trong năm trước đó **Cass đã bổ sung AI tạo sinh (generative AI)**, giúp Tessa tự tạo câu trả lời mới ngoài kịch bản. NEDA cho rằng mình không được biết; **CEO Cass thì nói thay đổi này nằm trong hợp đồng với NEDA**.
-  - NEDA đã nhận ảnh chụp màn hình phản ánh vấn đề của Tessa từ **10/2022**, tức nhiều tháng trước vụ Maxwell.
+  - Cuối 05/2023, chuyên gia tư vấn **Sharon Maxwell** thử Tessa và được khuyên **giảm cân và thâm hụt calo**, tức là những hành vi có thể làm rối loạn ăn uống nặng hơn (Daily Dot).
+  - NEDA **gỡ Tessa** "cho tới khi có thông báo mới" (CNN, 01/06/2023). Theo Vice, bot bị vô hiệu hóa **2 ngày** trước khi được triển khai đầy đủ (AI Incident Database, Incident 545).
+  - Theo The Conversation (dẫn NPR), Tessa ban đầu không thể trả lời ngoài kịch bản. Sau đó công ty vận hành đã đổi Tessa sang phiên bản có tính năng hỏi đáp dùng **AI tạo sinh (generative AI)**.
 - **Số liệu có nguồn:**
-  - **Gần 70.000 người** dùng đường dây nóng của NEDA trong năm trước đó. Đường dây nóng do **5–6 nhân viên được trả lương, 2 giám sát** và **90–165 tình nguyện viên** vận hành (NPR, 31/05/2023).
-  - Tessa khuyên Maxwell giảm **1–2 pound/tuần (khoảng 0,5–0,9 kg)** bằng cách thâm hụt **500–1.000 calo/ngày** (NPR, 08/06/2023).
-  - Mốc thời gian: Tessa bị vô hiệu hóa ngày **30/05/2023**, khoảng **2 ngày** trước thời điểm dự kiến thay đường dây nóng; vấn đề đã được báo cho NEDA khoảng **7 tháng** trước đó (10/2022) (NPR).
+  - **Gần 70.000 người** dùng đường dây nóng của NEDA trong năm trước khi đóng. Đường dây nóng chỉ có **5–6 nhân viên được trả lương, 2 giám sát** và **90–165 tình nguyện viên** luân phiên (NPR, 31/05/2023, bản đăng lại trên WHYY).
+  - Tessa khuyên người dùng giảm **1–2 pound/tuần (khoảng 0,5–0,9 kg)** bằng cách thâm hụt **500–1.000 calo/ngày** (Daily Dot, 2023, lưu trên AI Incident Database).
 - **Nguồn:**
-  - *National Eating Disorders Association phases out human helpline, pivots to chatbot* — Kate Wells, NPR — 31/05/2023 — https://www.npr.org/sections/health-shots/2023/05/31/1179244569/national-eating-disorders-association-phases-out-human-helpline-pivots-to-chatbo (bản chữ: https://text.npr.org/1179244569)
-  - *An eating disorders chatbot offered dieting advice, raising fears about AI in health* — NPR — 08/06/2023 — https://www.kunc.org/npr-news/2023-06-08/an-eating-disorders-chatbot-offered-dieting-advice-raising-fears-about-ai-in-health (mục về Cass bổ sung generative AI và ảnh chụp màn hình từ 10/2022)
+  - *National Eating Disorders Association phases out human helpline, pivots to chatbot* — Kate Wells, NPR (bản đăng lại trên WHYY) — 31/05/2023 — https://whyy.org/npr-story/national-eating-disorders-association-chatbot/
   - *NEDA takes its AI chatbot offline after complaints of harmful advice* — CNN Business — 01/06/2023 — https://krdo.com/money/cnn-business-consumer/2023/06/01/national-eating-disorders-association-takes-its-ai-chatbot-offline-after-complaints-of-harmful-advice/
-  - AI Incident Database — Report 3141 — https://incidentdatabase.ai/reports/3141
+  - *'This robot causes harm': National Eating Disorders Association's new chatbot advises people with disordering eating to lose weight* — Daily Dot — 2023 — AI Incident Database, Report 3130: https://incidentdatabase.ai/reports/3130
+  - *Replacing frontline workers with AI can be a bad idea — here's why* — Mark Tsagas, The Conversation — 30/10/2023 — https://theconversation.com/replacing-frontline-workers-with-ai-can-be-a-bad-idea-heres-why-215120 (đoạn về việc Tessa được đổi sang AI tạo sinh)
+  - AI Incident Database — Incident 545 (tổng hợp các bài của Vice, Guardian, WSJ, NYT) — https://incidentdatabase.ai/cite/545/
 - **Phân biệt bằng chứng và nhận định:**
-  - 📌 **Nguồn xác nhận:** Tessa đã khuyên giảm cân và thâm hụt calo cho người thử; NEDA vô hiệu hóa bot; Cass đã bổ sung AI tạo sinh; NEDA nhận phản ánh từ 10/2022.
+  - 📌 **Nguồn xác nhận:** Tessa đã khuyên giảm cân và thâm hụt calo; NEDA gỡ bot; Tessa đã được đổi từ chatbot theo kịch bản sang phiên bản dùng AI tạo sinh.
   - 💭 **Chưa rõ / tôi suy luận:**
-    - Ai chịu trách nhiệm cho thay đổi đang **còn tranh cãi**: NEDA nói không biết, Cass nói thay đổi nằm trong hợp đồng.
+    - Ai quyết định và ai chịu trách nhiệm cho việc đổi sang AI tạo sinh **chưa được làm rõ** trong các nguồn tôi kiểm tra được.
     - Chưa có nguồn ghi nhận người dùng cụ thể nào **bị tái phát bệnh** vì Tessa.
     - Số người đã nhận câu trả lời có hại chưa được công bố.
 
@@ -57,14 +56,14 @@
 | High-risk moment | Người đang mắc hoặc có nguy cơ rối loạn ăn uống hỏi Tessa về cân nặng hay cách cải thiện sức khỏe — thời điểm chatbot thay thế đường dây nóng do người trực và câu trả lời có thể định hướng hành vi ăn uống của họ. |
 | Stakeholder bị ảnh hưởng | **Người dùng có rối loạn ăn uống** (trực tiếp); **người thân** của họ; **NEDA** (tổ chức triển khai); **nhân viên và tình nguyện viên đường dây nóng** (bị thay thế); **Cass** (nhà cung cấp). |
 | Failure mode | **Harmful advice** — bot khuyên giảm cân và thâm hụt calo, là hành vi có hại cho đúng nhóm người dùng mục tiêu. Phụ: **Escalation failure** — bot tiếp tục tự xử lý chủ đề cân nặng thay vì chuyển cho chuyên gia. *Giả thuyết:* lỗi chuyển tiếp này là suy luận của tôi từ việc đường dây nóng do người trực sắp bị đóng; nguồn không mô tả cơ chế chuyển tiếp của Tessa. |
-| Layer bắt đầu lỗi | **Model + Safety.** *Model (có nguồn):* NPR cho biết Cass đã bổ sung AI tạo sinh, nên Tessa tự sinh câu trả lời ngoài kịch bản do chuyên gia soạn. Mô hình mới không phù hợp với tác vụ cần nội dung được kiểm soát chặt. *Safety (có nguồn một phần):* NEDA nhận phản ánh từ 10/2022 nhưng bot vẫn hoạt động tới 05/2023. Việc không có guardrail chặn chủ đề giảm cân là giả thuyết của tôi; **chưa đủ bằng chứng** về cấu hình guardrail thực tế. |
+| Layer bắt đầu lỗi | **Model + Safety.** *Model (có nguồn):* theo The Conversation (dẫn NPR), Tessa được đổi từ chatbot theo kịch bản sang phiên bản dùng AI tạo sinh, nên có thể tự sinh câu trả lời ngoài kịch bản do chuyên gia soạn. Mô hình mới không phù hợp với tác vụ cần nội dung được kiểm soát chặt. *Safety (giả thuyết):* việc thay đổi mô hình mà không kiểm thử lại, và không có guardrail chặn chủ đề giảm cân, là suy luận của tôi từ việc bot đưa lời khuyên giảm cân sau khi được nâng cấp; **chưa đủ bằng chứng** về quy trình kiểm thử và cấu hình guardrail thực tế. |
 | Harm xảy ra là gì? | 📌 **[Đã xảy ra]** **Người thử (Sharon Maxwell)** bị khuyên giảm 1–2 pound/tuần, thâm hụt 500–1.000 calo/ngày **khi** hỏi Tessa. **NEDA** bị chỉ trích và phải vô hiệu hóa bot **khi** các câu trả lời được công khai. 💭 **[Nguy cơ, chưa ghi nhận]** **Người bệnh rối loạn ăn uống** có thể tái phát hoặc bệnh nặng hơn **khi** làm theo lời khuyên. **Người đang khủng hoảng** có thể không được hỗ trợ kịp **khi** kênh do người trực bị thay bằng bot. |
 | Harm lens | **Injury** (tổn hại sức khỏe thể chất do hành vi ăn kiêng ở người rối loạn ăn uống); phụ: **Misinformation** (lời khuyên sức khỏe sai với đối tượng). |
 | Severity | **Critical** |
 | Scale | **Medium** — đánh giá của tôi. Căn cứ: đường dây nóng phục vụ gần 70.000 người/năm (NPR) và Tessa được định thay thế kênh này. **Giới hạn:** số người thực sự đã dùng Tessa và nhận câu trả lời có hại **chưa được công bố**. |
-| Probability | **High** — đánh giá của tôi. Căn cứ: một người thử nhận được lời khuyên có hại ngay khi hỏi về cân nặng; NEDA đã nhận phản ánh tương tự từ 10/2022, tức không phải một lần duy nhất. Không có tỷ lệ đo được. |
+| Probability | **High** — đánh giá của tôi. Căn cứ: người thử nhận được lời khuyên có hại ngay khi hỏi về cân nặng, và nhiều người dùng khác cũng phản ánh nội dung tương tự (các bài tổng hợp trong AI Incident Database, Incident 545). Không có tỷ lệ đo được. |
 | Frequency | **Chưa đủ dữ liệu để đánh giá bằng số.** Nhận định: **Medium** — chủ đề cân nặng thường gặp với người rối loạn ăn uống, nhưng không phải phiên chat nào cũng hỏi. |
-| Vì sao? | **Severity Critical:** rối loạn ăn uống có thể đe dọa tính mạng, và lời khuyên đi ngược hẳn mục tiêu điều trị. **Scale Medium:** quy mô tiềm năng lớn (70.000 người/năm) nhưng bot bị tắt chỉ vài ngày sau khi định thay thế đường dây nóng, nên tôi không chọn High. **Probability High:** lỗi tái hiện dễ và đã được phản ánh từ nhiều nguồn. **Frequency:** không có số phiên chat nên chỉ nhận định. **Nguồn:** NPR 31/05/2023 và 08/06/2023; CNN 01/06/2023. |
+| Vì sao? | **Severity Critical:** rối loạn ăn uống có thể đe dọa tính mạng, và lời khuyên đi ngược hẳn mục tiêu điều trị. **Scale Medium:** quy mô tiềm năng lớn (70.000 người/năm) nhưng bot bị tắt chỉ vài ngày sau khi định thay thế đường dây nóng, nên tôi không chọn High. **Probability High:** lỗi tái hiện dễ và được nhiều người dùng phản ánh. **Frequency:** không có số phiên chat nên chỉ nhận định. **Nguồn:** NPR/WHYY 31/05/2023; CNN 01/06/2023; Daily Dot; The Conversation; AI Incident Database. |
 
 ---
 
@@ -85,10 +84,9 @@
   - Nằm viện **3 tuần**.
   - Nguồn: báo cáo ca bệnh trên Annals of Internal Medicine: Clinical Cases, 2025.
 - **Nguồn:**
-  - *A Case of Bromism Influenced by Use of Artificial Intelligence* — Eichenberger A., Thielke S., Van Buskirk A. — Annals of Internal Medicine: Clinical Cases — 05/08/2025 — https://doi.org/10.7326/aimcc.2024.1260
+  - *A Case of Bromism Influenced by Use of Artificial Intelligence* — Eichenberger A., Thielke S., Van Buskirk A. — Annals of Internal Medicine: Clinical Cases — 08/2025 — nội dung báo cáo ca bệnh được lưu trên AI Incident Database, Report 6092: https://incidentdatabase.ai/reports/6092 (mục nồng độ bromua, thời gian dùng, thời gian nằm viện, phép thử ChatGPT 3.5)
   - *Man sought diet advice from ChatGPT and ended up with "bromism"* — Live Science — 08/2025 — https://www.livescience.com/health/food-diet/man-sought-diet-advice-from-chatgpt-and-ended-up-with-bromide-intoxication
   - *Man who asked ChatGPT about cutting out salt was hospitalized with hallucinations* — NBC News — 08/2025 — https://www.nbcnews.com/tech/tech-news/man-asked-chatgpt-cutting-salt-diet-was-hospitalized-hallucinations-rcna225055
-  - AI Incident Database — Report 6092 — https://incidentdatabase.ai/reports/6092
 - **Phân biệt bằng chứng và nhận định:**
   - 📌 **Nguồn xác nhận:** người bệnh ngộ độc bromua sau khi tham khảo ChatGPT; nồng độ bromua máu 1.700 mg/L; nằm viện 3 tuần; khi hỏi lại, ChatGPT 3.5 vẫn nhắc tới bromua mà không cảnh báo cụ thể.
   - 💭 **Chưa rõ:** các bác sĩ **không xem được nguyên văn cuộc hội thoại** của người bệnh, nên không biết chính xác câu hỏi và câu trả lời ban đầu. Người dùng cũng có thể đã hiểu sai ngữ cảnh (bromua thay clorua trong mục đích khác, như tẩy rửa). Đây là **một ca được ghi nhận**, chưa đủ để ước lượng tần suất.
@@ -121,7 +119,7 @@
   - **11/2018:** các nhà nghiên cứu độc lập phản biện kết quả này trên The Lancet.
 - **AI được dùng để làm gì:** người dùng nhập triệu chứng; AI gợi ý bệnh có thể mắc và khuyên mức xử lý, như tự chăm sóc, gặp bác sĩ đa khoa hay đi cấp cứu.
 - **Vấn đề hoặc sự kiện đáng chú ý:**
-  - **Tuyên bố hiệu năng thiếu bằng chứng:** Babylon tuyên bố AI đạt điểm cao hơn mức đỗ trung bình của bác sĩ trong bài thi MRCGP và chính xác ngang bác sĩ. Fraser, Coiera và Wong viết trên The Lancet rằng nghiên cứu này "không đưa ra bằng chứng thuyết phục" rằng hệ thống tốt hơn bác sĩ trong tình huống thực tế, và "có khả năng nó kém hơn đáng kể". Lý do: dữ liệu được **bác sĩ nhập** chứ không phải người bệnh thật.
+  - **Tuyên bố hiệu năng thiếu bằng chứng:** Babylon tuyên bố AI đạt điểm cao hơn mức đỗ trung bình của bác sĩ trong bài thi MRCGP và chính xác ngang bác sĩ. Theo Undark, các nhà nghiên cứu (nhóm Fraser, Coiera, Wong trên The Lancet) kết luận nghiên cứu của Babylon **"không đưa ra bằng chứng thuyết phục"** rằng symptom checker hoạt động tốt hơn bác sĩ. Undark cũng ghi nhận khi đó **chưa có nghiên cứu ngẫu nhiên có đối chứng, đã bình duyệt** nào kiểm chứng hệ thống trên bệnh nhân thật.
   - **Thiên lệch giới tính:** Undark (2019) ghi lại trường hợp hai hồ sơ giống hệt nhau, cùng triệu chứng đau ngực. Với hồ sơ **nữ**, app gợi ý trầm cảm hoặc cơn hoảng loạn; với hồ sơ **nam**, app gợi ý vấn đề tim mạch.
   - **Quảng cáo gây hiểu lầm:** Babylon từng bị cơ quan quản lý quảng cáo của Anh khiển trách. Royal College of General Practitioners và British Medical Association cũng lên tiếng nghi ngờ các tuyên bố của công ty.
 - **Số liệu có nguồn:**
@@ -131,14 +129,13 @@
   - **Theo Undark (12/2019):** symptom checker đã được dùng khoảng **1,7 triệu lượt** ở nhiều quốc gia, và nền tảng đã có khoảng **700.000 lượt tư vấn số** giữa bệnh nhân và bác sĩ.
   - Theo Undark (12/2019), khi đó **chưa có nghiên cứu ngẫu nhiên có đối chứng, đã bình duyệt** nào kiểm chứng hiệu năng của hệ thống trên bệnh nhân thật.
 - **Nguồn:**
-  - *Safety of patient-facing digital symptom checkers* — Fraser H., Coiera E., Wong D. — The Lancet 392(10161):2263–2264 — 24/11/2018 — https://eprints.whiterose.ac.uk/id/eprint/138305/
+  - *Safety of patient-facing digital symptom checkers* — Fraser H., Coiera E., Wong D. — The Lancet 392(10161):2263–2264 — 24/11/2018 — thông tin xuất bản: https://eprints.whiterose.ac.uk/id/eprint/138305/ (trang này chỉ có thông tin trích dẫn; nội dung phản biện được trích lại trong bài Undark bên dưới)
   - *Babylon AI achieves equivalent accuracy with human doctors* — thông cáo của Babylon, đăng lại trên BioSpectrum — 06/2018 — https://biospectrumindia.com/news/57/11202/babylon-ai-achieves-equivalent-accuracy-with-human-doctors-.html
-  - *Review says Babylon's AI claims lack 'convincing evidence'* — Digital Health — 11/2018 — https://www.digitalhealth.net/2018/11/lancet-review-babylons-ai/
-  - *Medical Advice From a Bot: The Unproven Promise of Babylon Health* — Undark — 09/12/2019 — https://undark.org/2019/12/09/babylon-health-artificial-intelligence-medical-advice/ (mục về thiên lệch giới tính, khiển trách quảng cáo, số lượt sử dụng)
+  - *Medical Advice From a Bot: The Unproven Promise of Babylon Health* — Undark — 09/12/2019 — https://undark.org/2019/12/09/babylon-health-artificial-intelligence-medical-advice/ (mục về phản biện của nhóm Lancet, thiên lệch giới tính, khiển trách quảng cáo, số lượt sử dụng)
 - **Phân biệt bằng chứng và nhận định:**
   - 📌 **Nguồn xác nhận:**
     - Các con số 80%, 81% là **do Babylon tự công bố**.
-    - Phản biện về phương pháp đã được đăng trên The Lancet.
+    - Phản biện của nhóm Lancet được Undark trích lại.
     - Ví dụ về thiên lệch giới tính và việc bị khiển trách vì quảng cáo được Undark ghi lại.
   - 💭 **Chưa rõ / tôi suy luận:**
     - **Chưa có nguồn ghi nhận người dùng cụ thể nào bị tổn hại** vì triage sai của Babylon. Tác hại tôi phân tích dưới đây là **nguy cơ**.
@@ -151,14 +148,14 @@
 | High-risk moment | Một phụ nữ đau ngực nhập triệu chứng vào symptom checker — thời điểm AI đưa ra gợi ý chẩn đoán và mức khẩn cấp, quyết định người dùng có đi cấp cứu hay không. |
 | Stakeholder bị ảnh hưởng | **Người dùng nữ** có triệu chứng tim mạch (trực tiếp); **người thân**; **NHS và bác sĩ đa khoa** tiếp nhận ca chuyển tuyến; **Babylon** (uy tín, pháp lý). |
 | Failure mode | **Bias / fairness** — cùng triệu chứng đau ngực nhưng hồ sơ nữ được gợi ý trầm cảm hoặc hoảng loạn, hồ sơ nam được gợi ý bệnh tim (Undark). Phụ: **Over-reliance** — app được quảng bá là chính xác "ngang bác sĩ", có thể khiến người dùng tin kết quả mà không đi khám; đây là nhận định của tôi. |
-| Layer bắt đầu lỗi | **Model + Safety**, phụ là **UX.** *Model:* kết quả khác nhau theo giới tính với cùng triệu chứng cho thấy hành vi mô hình không phù hợp với tác vụ triage. **Chưa đủ bằng chứng** về nguyên nhân kỹ thuật; giả thuyết của tôi là thiên lệch từ dữ liệu hoặc từ quy tắc xác suất theo giới tính. *Safety (có nguồn):* The Lancet chỉ ra hệ thống chưa được đánh giá độc lập với người dùng thật trước khi triển khai rộng. *UX (giả thuyết):* kết quả được trình bày như lời khuyên y khoa nên khó để người dùng tự kiểm tra lại. |
+| Layer bắt đầu lỗi | **Model + Safety**, phụ là **UX.** *Model:* kết quả khác nhau theo giới tính với cùng triệu chứng cho thấy hành vi mô hình không phù hợp với tác vụ triage. **Chưa đủ bằng chứng** về nguyên nhân kỹ thuật; giả thuyết của tôi là thiên lệch từ dữ liệu hoặc từ quy tắc xác suất theo giới tính. *Safety (có nguồn):* theo Undark, chưa có nghiên cứu ngẫu nhiên có đối chứng, đã bình duyệt nào kiểm chứng hệ thống trên bệnh nhân thật, dù app đã được triển khai rộng. *UX (giả thuyết):* kết quả được trình bày như lời khuyên y khoa nên khó để người dùng tự kiểm tra lại. |
 | Harm xảy ra là gì? | 📌 **[Đã xảy ra, ở mức phép thử]** **Hồ sơ người dùng nữ** nhận gợi ý trầm cảm hoặc hoảng loạn thay vì bệnh tim **khi** nhập cùng triệu chứng với hồ sơ nam (Undark). **Babylon** bị khiển trách **khi** quảng cáo gây hiểu lầm. 💭 **[Nguy cơ, chưa ghi nhận]** **Phụ nữ bị nhồi máu cơ tim** có thể đi cấp cứu muộn **khi** tin vào gợi ý "trầm cảm hoặc hoảng loạn". |
 | Harm lens | **Injury** (nguy cơ bỏ lỡ cấp cứu tim mạch); phụ: **Dignity loss** (triệu chứng của nữ giới bị quy cho vấn đề tâm lý, đối xử khác biệt theo giới tính). |
 | Severity | **Critical** |
 | Scale | **High** — đánh giá của tôi. Căn cứ: symptom checker đã được dùng khoảng **1,7 triệu lượt** ở nhiều quốc gia (Undark, 12/2019). Nếu thiên lệch nằm trong mô hình thì nó lặp lại với mọi người dùng cùng nhóm. **Giới hạn:** không có số liệu về số người dùng nữ bị đau ngực. |
-| Probability | **Chưa đủ dữ liệu để đánh giá bằng tỷ lệ.** Nhận định: **Medium** — sai lệch xuất hiện trong phép thử, và The Lancet cho rằng hệ thống *có thể* kém hơn bác sĩ đáng kể khi người dùng thật tự nhập. |
+| Probability | **Chưa đủ dữ liệu để đánh giá bằng tỷ lệ.** Nhận định: **Medium** — sai lệch xuất hiện trong phép thử, và theo Undark, hiệu năng của hệ thống trên bệnh nhân thật chưa được kiểm chứng. |
 | Frequency | **Chưa đủ dữ liệu để đánh giá.** Nhận định: **Medium** — đau ngực là triệu chứng hay được tra cứu, nhưng ca nguy hiểm thật chỉ là một phần. |
-| Vì sao? | **Severity Critical:** bỏ lỡ nhồi máu cơ tim có thể gây tử vong. **Scale High:** có số lượt sử dụng lớn từ nguồn, và thiên lệch ở mức mô hình mang tính hệ thống. **Probability và Frequency** chỉ nhận định, vì không có nghiên cứu đo tỷ lệ sai trên người dùng thật. **Giới hạn:** ví dụ thiên lệch là phép thử đơn lẻ; số liệu hiệu năng 80%/81% là Babylon tự công bố. **Nguồn:** The Lancet (11/2018); Undark (12/2019). |
+| Vì sao? | **Severity Critical:** bỏ lỡ nhồi máu cơ tim có thể gây tử vong. **Scale High:** có số lượt sử dụng lớn từ nguồn, và thiên lệch ở mức mô hình mang tính hệ thống. **Probability và Frequency** chỉ nhận định, vì không có nghiên cứu đo tỷ lệ sai trên người dùng thật. **Giới hạn:** ví dụ thiên lệch là phép thử đơn lẻ; số liệu hiệu năng 80%/81% là Babylon tự công bố. **Nguồn:** Undark (12/2019), trích phản biện của nhóm Lancet (11/2018); thông cáo của Babylon (06/2018). |
 
 ---
 
