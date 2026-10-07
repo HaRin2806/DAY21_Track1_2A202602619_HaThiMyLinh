@@ -1,161 +1,159 @@
-# Day 21 — Track 1 · Bài cá nhân: Rủi ro AI trong ngành Y tế
+# Lab 21 — Phân tích rủi ro AI qua case study thực tế
 
-| | |
-|---|---|
-| **Học viên** | Hà Thị Mỹ Linh — 2A202602619 |
-| **Ngành chọn** | **Y tế (Healthcare)** — trọng tâm: AI tư vấn sức khỏe/dinh dưỡng và AI hỗ trợ quyết định lâm sàng |
-| **Liên hệ dự án** | Dự án nhóm **P-110 — AI Nutrition Agent** (tư vấn dinh dưỡng cho bệnh nhân tiểu đường, bệnh thận mạn, tim mạch, gout) |
-| **Nguồn yêu cầu** | Slide *AI Ethics, AI Safety & Responsible AI* — trang 31 (Lab Assignment, mục Cá nhân); Harm Map trang 22–25 |
+- Họ và tên: Hà Thị Mỹ Linh
+- MSSV / mã học viên: 2A202602619
+- Lớp: AI20K Cohort 4 — L3B
+- Ngành đã chọn: **Y tế (Healthcare)** — trọng tâm là AI tư vấn sức khỏe/dinh dưỡng và AI hỗ trợ quyết định lâm sàng. Đây cũng là ngành của dự án nhóm **P-110 — AI Nutrition Agent** (tư vấn dinh dưỡng cho bệnh nhân tiểu đường, bệnh thận mạn, tim mạch, gout).
 
-> **Quy ước ghi chú:** 📌 **[Sự kiện]** = thông tin đã được nguồn công bố (có link). 💭 **[Nhận định]** = phân tích/suy luận của cá nhân em, *không* phải hậu quả đã được ghi nhận.
+> **Quy ước ghi chú:** 📌 **[Sự kiện]** = thông tin đã được nguồn công bố (có link). 💭 **[Nhận định]** = phân tích hoặc suy luận của tôi, **không** phải hậu quả đã được ghi nhận.
 
----
+### 1. Industry Risk Snapshot
 
-## 1. Industry Risk Snapshot — Ngành Y tế
-
-Thang chấm: 1 (thấp) → 5 (rất cao).
-
-| Tiêu chí | Mức | Giải thích ngắn |
-|---|:-:|---|
-| **Tác hại chính** | 5 | Tổn hại sức khỏe thể chất/tinh thần, chẩn đoán sai hoặc bỏ sót, điều trị chậm, ngộ độc do làm theo lời khuyên sai, phân biệt đối xử trong tiếp cận chăm sóc, mất niềm tin vào hệ thống y tế. |
-| **Mức độ high-stakes** | 5 | Quyết định ảnh hưởng trực tiếp đến **tính mạng**; nhiều tác hại **không đảo ngược được** (biến chứng, tử vong). Người dùng thường ở trạng thái dễ tổn thương (bệnh nặng, rối loạn tâm lý, người cao tuổi) và có xu hướng tin vào thông tin nghe "có vẻ y khoa". |
-| **Dữ liệu nhạy cảm** | 5 | Hồ sơ bệnh án, chẩn đoán, thuốc đang dùng, xét nghiệm, sức khỏe tâm thần, dữ liệu sinh trắc học. Tại Việt Nam, dữ liệu sức khỏe là **dữ liệu cá nhân nhạy cảm** (Nghị định 13/2023/NĐ-CP; Luật Bảo vệ dữ liệu cá nhân 2025). |
-| **Nhu cầu human review** | 5 | **Bắt buộc** với mọi đầu ra mang tính chẩn đoán, điều trị hoặc kê thực đơn cho người bệnh. AI chỉ nên đóng vai **hỗ trợ**; bác sĩ hoặc chuyên gia dinh dưỡng duyệt **trước** khi kết quả đến tay bệnh nhân. Các tình huống khẩn cấp hoặc khủng hoảng phải chuyển cho người thật ngay. |
-
-**Failure mode điển hình của ngành:** bịa hoặc trả lời sai kiến thức y khoa (hallucination); lời khuyên đúng về mặt hóa học nhưng sai ngữ cảnh lâm sàng; mô hình dự đoán kém khi áp dụng sang bệnh viện hoặc quần thể khác (dataset shift); thiên lệch do dùng biến đại diện (proxy) sai; alert fatigue; nhà cung cấp tự thay đổi mô hình mà không thông báo.
-
-**Kết luận:** 💭 [Nhận định] Y tế thuộc nhóm **rủi ro cao nhất**. Hệ thống AI trong ngành này cần được kiểm chứng độc lập trước khi triển khai, giám sát liên tục sau triển khai, và có người chịu trách nhiệm chuyên môn cho từng đầu ra.
+| Nội dung | Đánh giá của tôi và lý do |
+| --- | --- |
+| Những tác hại chính có thể xảy ra | **Tổn hại sức khỏe thể chất/tinh thần** cho người bệnh, vì chẩn đoán sai, bỏ sót bệnh, điều trị chậm hoặc làm theo lời khuyên sai (ví dụ ngộ độc). **Phân biệt đối xử** trong tiếp cận chăm sóc khi mô hình bị thiên lệch. **Quá tải và mất niềm tin** của bác sĩ, điều dưỡng do cảnh báo sai (alert fatigue). **Thiệt hại uy tín và pháp lý** cho bệnh viện hoặc tổ chức triển khai. Người bị ảnh hưởng: bệnh nhân, người thân, người chăm sóc, nhân viên y tế, cơ sở y tế. |
+| Mức độ high-stakes | **Cao.** Quyết định ảnh hưởng trực tiếp tới **tính mạng**, và nhiều tác hại **không đảo ngược được** (biến chứng, tử vong). Người dùng thường ở trạng thái dễ tổn thương (bệnh nặng, rối loạn tâm lý, người cao tuổi) và dễ tin vào thông tin nghe "có vẻ y khoa". |
+| Dữ liệu nhạy cảm có thể được sử dụng | Hồ sơ bệnh án, chẩn đoán, bệnh nền, thuốc đang dùng, kết quả xét nghiệm, dị ứng, sức khỏe tâm thần, chỉ số cơ thể (cân nặng, BMI), ảnh bữa ăn, thông tin liên hệ của người bệnh và người chăm sóc. Tại Việt Nam, dữ liệu sức khỏe thuộc nhóm **dữ liệu cá nhân nhạy cảm** (Nghị định 13/2023/NĐ-CP; Luật Bảo vệ dữ liệu cá nhân 2025). *Bài này không dùng dữ liệu thật.* |
+| Nhu cầu human review | **Cao.** **Ai kiểm tra:** bác sĩ hoặc chuyên gia dinh dưỡng có chuyên môn. **Ở bước nào:** (1) **trước** khi đầu ra mang tính chẩn đoán, điều trị hoặc thực đơn đến tay bệnh nhân; (2) **trước khi triển khai** mô hình, bằng cách kiểm chứng trên dữ liệu của chính cơ sở; (3) **sau mỗi lần thay đổi** model hoặc prompt và **định kỳ** sau triển khai; (4) **ngay lập tức** khi có dấu hiệu khẩn cấp hoặc khủng hoảng thì chuyển cho người thật. **Vì sao:** sai sót có thể gây hại không đảo ngược được, và AI không chịu trách nhiệm chuyên môn. |
 
 ---
 
-## 2. Brief Case
+### 2. Case study 1 — Chatbot "Tessa" của NEDA khuyên giảm cân cho người rối loạn ăn uống
 
-Ba case dưới đây cùng thuộc ngành y tế và trải dài từ AI mà người bệnh tự dùng (case 1–2) đến AI dùng trong bệnh viện (case 3).
+#### Brief Case
 
-### Case 1 — Chatbot "Tessa" của NEDA khuyên giảm cân cho người rối loạn ăn uống (Mỹ, 2023)
+- **Tổ chức / sản phẩm AI:** National Eating Disorders Association (NEDA), tổ chức phi lợi nhuận về rối loạn ăn uống của Mỹ. Chatbot *Tessa* do công ty Cass (trước đây là X2AI) cung cấp và tùy biến.
+- **Thời gian, địa điểm / bối cảnh:** Mỹ. Tessa được triển khai lặng lẽ từ 02/2022. Tháng 5/2023, NEDA cho nhân viên đường dây nóng nghỉ việc và dự định để Tessa thay thế đường dây nóng do người trực từ 01/06/2023.
+- **AI được dùng để làm gì:** chatbot hỗ trợ phòng ngừa và cung cấp thông tin cho người có nguy cơ rối loạn ăn uống.
+- **Vấn đề hoặc sự kiện đáng chú ý:**
+  - Chuyên gia tư vấn Sharon Maxwell thử Tessa và được khuyên **giảm cân, đếm calo, đo mỡ cơ thể**, tức là những hành vi có thể làm rối loạn ăn uống nặng hơn.
+  - Bot cũng không phản hồi phù hợp với các câu như "I hate my body".
+  - NEDA **gỡ Tessa ngày 30/05/2023**. Theo NEDA, nhà cung cấp Cass đã **cập nhật mã của Tessa mà NEDA không biết**.
+- **Số liệu có nguồn:**
+  - Đường dây nóng của NEDA được **gần 70.000 người** sử dụng trong năm trước sự kiện (NPR, 31/05/2023).
+  - Tessa khuyên người thử giảm **1–2 pound/tuần (khoảng 0,5–1 kg/tuần)** (CNN, 01/06/2023).
+  - Tessa bị gỡ ngày **30/05/2023**, **2 ngày** trước ngày dự kiến thay thế hoàn toàn đường dây nóng.
+- **Nguồn:**
+  - *National Eating Disorders Association phases out human helpline, pivots to chatbot* — NPR — 31/05/2023 — https://www.npr.org/sections/health-shots/2023/05/31/1179244569/national-eating-disorders-association-phases-out-human-helpline-pivots-to-chatbo
+  - NPR transcript — https://www.npr.org/transcripts/1177847298 (mục NEDA cho biết Cass đã cập nhật mã mà NEDA không biết)
+  - *NEDA takes its AI chatbot offline after complaints of harmful advice* — CNN Business — 01/06/2023 — https://krdo.com/money/cnn-business-consumer/2023/06/01/national-eating-disorders-association-takes-its-ai-chatbot-offline-after-complaints-of-harmful-advice/
+  - AI Incident Database — Report 3141 — https://incidentdatabase.ai/reports/3141
+- **Phân biệt bằng chứng và nhận định:**
+  - 📌 **Nguồn xác nhận:** Tessa đã đưa lời khuyên giảm cân và đếm calo; NEDA gỡ bot; theo NEDA, nhà cung cấp đã thay đổi bot mà không báo.
+  - 💭 **Tôi suy luận / chưa rõ:** chưa có nguồn ghi nhận người dùng cụ thể nào **bị tái phát bệnh** vì Tessa. Số người đã nhận câu trả lời có hại chưa được công bố. Chi tiết kỹ thuật của bản cập nhật (có phải thành phần AI tạo sinh hay không) chỉ được nêu qua phát ngôn của NEDA, chưa được kiểm chứng độc lập.
 
-| | |
-|---|---|
-| **Hệ thống** | Chatbot *Tessa* của National Eating Disorders Association (NEDA), do công ty Cass (X2AI) cung cấp và tùy biến |
-| **Mục đích** | Hỗ trợ phòng ngừa và cung cấp thông tin cho người có nguy cơ rối loạn ăn uống; dự kiến **thay thế đường dây nóng do người trực** |
-| **Vấn đề** | Tessa khuyên người dùng giảm cân, đếm calo và đo mỡ cơ thể, tức là đúng những hành vi có thể làm rối loạn ăn uống nặng hơn |
+#### Harm Map Worksheet
 
-**Số liệu và sự kiện:**
-- 📌 Đường dây nóng của NEDA được **gần 70.000 người** sử dụng trong năm trước đó. NEDA cho toàn bộ nhân viên đường dây nóng nghỉ việc và dự định chuyển sang Tessa từ **01/06/2023** (NPR).
-- 📌 Tessa được triển khai "lặng lẽ" từ **02/2022**. Người dùng thử là chuyên gia tư vấn Sharon Maxwell; Tessa khuyên chị giảm **0,5–1 kg (1–2 pound)/tuần**, rồi Maxwell công khai các câu trả lời này.
-- 📌 NEDA **gỡ Tessa ngày 30/05/2023**, tức vài ngày trước khi đóng đường dây nóng do người trực.
-- 📌 Theo NEDA, sau khi điều tra họ phát hiện nhà cung cấp Cass đã **cập nhật mã nguồn của Tessa mà NEDA không biết**, khiến chatbot đưa ra những câu trả lời không còn được kiểm soát.
-
-**Nguồn:**
-- NPR (31/05/2023) — [National Eating Disorders Association phases out human helpline, pivots to chatbot](https://www.npr.org/sections/health-shots/2023/05/31/1179244569/national-eating-disorders-association-phases-out-human-helpline-pivots-to-chatbo)
-- NPR transcript — [npr.org/transcripts/1177847298](https://www.npr.org/transcripts/1177847298)
-- CNN Business (01/06/2023) — [NEDA takes its AI chatbot offline after complaints of harmful advice](https://krdo.com/money/cnn-business-consumer/2023/06/01/national-eating-disorders-association-takes-its-ai-chatbot-offline-after-complaints-of-harmful-advice/)
-- AI Incident Database — [Report 3141](https://incidentdatabase.ai/reports/3141)
-
-### Case 2 — ChatGPT gợi ý thay muối ăn bằng natri bromua, người dùng nhập viện vì ngộ độc bromua (Mỹ, 2025)
-
-| | |
-|---|---|
-| **Hệ thống** | ChatGPT (theo các bác sĩ báo cáo ca bệnh thì nhiều khả năng là GPT-3.5 hoặc 4.0) — chatbot đa dụng, **không** được thiết kế cho mục đích y tế |
-| **Mục đích (người dùng)** | Một người đàn ông 60 tuổi muốn bỏ muối ăn (natri clorua) khỏi chế độ ăn và hỏi ChatGPT nên dùng chất gì thay thế |
-| **Vấn đề** | ChatGPT nêu **bromua** là chất có thể thay cho clorua mà **không cảnh báo về sức khỏe** và không hỏi người dùng định dùng để làm gì. Người này mua natri bromua và dùng thay muối ăn |
-
-**Số liệu và sự kiện:**
-- 📌 Người bệnh dùng natri bromua thay muối ăn trong **3 tháng**, sau đó nhập viện với hoang tưởng, ảo giác, mất ngủ, mụn trứng cá ở mặt và mất điều hòa vận động; phải **nằm viện 3 tuần** (có giai đoạn bị giữ điều trị tâm thần).
-- 📌 Nồng độ bromua trong máu là **1.700 mg/L**, trong khi khoảng tham chiếu là **0,9–7,3 mg/L**, tức cao hơn mức trên của khoảng tham chiếu khoảng **230 lần**.
-- 📌 Các bác sĩ tự hỏi lại ChatGPT 3.5 và nhận được câu trả lời **vẫn có bromua**, chỉ ghi chung chung rằng "ngữ cảnh rất quan trọng", không cảnh báo cụ thể và không hỏi lý do như một nhân viên y tế sẽ hỏi.
-
-**Nguồn:**
-- Eichenberger A., Thielke S., Van Buskirk A. — *A Case of Bromism Influenced by Use of Artificial Intelligence*, Annals of Internal Medicine: Clinical Cases (05/08/2025), [DOI 10.7326/aimcc.2024.1260](https://doi.org/10.7326/aimcc.2024.1260)
-- Live Science — [Man sought diet advice from ChatGPT and ended up with "bromism"](https://www.livescience.com/health/food-diet/man-sought-diet-advice-from-chatgpt-and-ended-up-with-bromide-intoxication)
-- NBC News — [Man who asked ChatGPT about cutting out salt was hospitalized with hallucinations](https://www.nbcnews.com/tech/tech-news/man-asked-chatgpt-cutting-salt-diet-was-hospitalized-hallucinations-rcna225055)
-- AI Incident Database — [Report 6092](https://incidentdatabase.ai/reports/6092)
-
-### Case 3 — Epic Sepsis Model bỏ sót 2/3 ca nhiễm khuẩn huyết (Mỹ, 2021)
-
-| | |
-|---|---|
-| **Hệ thống** | Epic Sepsis Model (ESM) — mô hình dự đoán nhiễm khuẩn huyết (sepsis) tích hợp sẵn trong hệ thống bệnh án điện tử Epic, được **hàng trăm bệnh viện** tại Mỹ sử dụng |
-| **Mục đích** | Tự động cảnh báo sớm cho bác sĩ khi bệnh nhân nội trú có nguy cơ sepsis, để điều trị kháng sinh kịp thời |
-| **Vấn đề** | Khi được đánh giá độc lập (external validation) tại Michigan Medicine, mô hình cho kết quả **kém hơn nhiều** so với công bố của nhà cung cấp: vừa bỏ sót nhiều ca bệnh, vừa cảnh báo sai rất nhiều |
-
-**Số liệu và sự kiện:**
-- 📌 Nghiên cứu hồi cứu trên **27.697 bệnh nhân** với **38.455 lượt nhập viện** (12/2018–10/2019).
-- 📌 AUC chỉ đạt **0,63**, trong khi nhà cung cấp công bố 0,76–0,83. Độ nhạy **33%**, PPV **12%**.
-- 📌 Mô hình **bỏ sót 67%** bệnh nhân sepsis nhưng vẫn **phát cảnh báo cho 18%** tổng số bệnh nhân nằm viện, gây nguy cơ **alert fatigue** (bác sĩ quen bỏ qua cảnh báo).
-- 📌 Mô hình chỉ phát hiện thêm **7%** số ca sepsis mà bác sĩ chưa kịp điều trị kịp thời.
-
-**Nguồn:**
-- Wong A. et al. — *External Validation of a Widely Implemented Proprietary Sepsis Prediction Model in Hospitalized Patients*, JAMA Internal Medicine (21/06/2021), [jamanetwork.com/…/2781313](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2781313)
-- Michigan Medicine — [Popular sepsis prediction tool less accurate than claimed](https://michiganmedicine.org/health-lab/popular-sepsis-prediction-tool-less-accurate-claimed)
-- MedCity News — [Popular sepsis prediction model works substantially worse than claimed](https://medcitynews.com/2021/06/popular-sepsis-prediction-model-works-substantially-worse-than-claimed-researchers-find)
+| Trường | Phân tích của tôi |
+| --- | --- |
+| High-risk moment | Người đang mắc hoặc có nguy cơ rối loạn ăn uống hỏi Tessa cách cải thiện sức khỏe hoặc chia sẻ cảm xúc tiêu cực về cơ thể, và bot khuyên giảm cân, đếm calo thay vì hỗ trợ hoặc chuyển cho người tư vấn. |
+| Stakeholder bị ảnh hưởng | Người dùng có rối loạn ăn uống; người thân của họ; NEDA (tổ chức triển khai); nhân viên đường dây nóng bị thay thế; nhà cung cấp Cass. |
+| Failure mode | **Harmful advice** (lời khuyên có hại cho đúng nhóm người dùng mục tiêu) kèm **Escalation failure** (không chuyển sang người thật khi người dùng có dấu hiệu khủng hoảng). |
+| Layer bắt đầu lỗi | **Safety + Model.** *Safety:* không có guardrail chặn chủ đề giảm cân, calo, BMI; không có quy trình kiểm soát thay đổi để nhà cung cấp phải xin duyệt và kiểm thử lại trước khi cập nhật. *Model:* theo NEDA, sau bản cập nhật bot trả lời ngoài kịch bản đã duyệt. Chưa đủ bằng chứng công khai để xác định chính xác thay đổi kỹ thuật là gì. |
+| Harm xảy ra là gì? | 📌 **[Đã xảy ra]** Người thử nhận lời khuyên giảm 0,5–1 kg/tuần và đếm calo; NEDA phải gỡ bot và bị chỉ trích rộng rãi. 💭 **[Nguy cơ, chưa ghi nhận]** Người bệnh làm theo có thể tái phát hoặc bệnh nặng hơn; người đang khủng hoảng mất kênh hỗ trợ là con người. |
+| Harm lens | **Injury** (sức khỏe thể chất và tinh thần); phụ: **Trust loss** (niềm tin vào tổ chức hỗ trợ). |
+| Severity | **Critical.** Rối loạn ăn uống có thể đe dọa tính mạng, và lời khuyên đi ngược hẳn mục tiêu điều trị. |
+| Scale | **Medium.** Đường dây nóng phục vụ khoảng 70.000 người/năm, và Tessa được dự định thay thế kênh này. Một thay đổi của nhà cung cấp ảnh hưởng **cùng lúc** tới mọi người dùng, nhưng số người đã thực sự dùng Tessa chưa được công bố. |
+| Probability | **High.** Lỗi bị phát hiện chỉ sau vài lượt thử của một người dùng, tức là xảy ra dễ dàng chứ không phải trường hợp hiếm. |
+| Frequency | **Medium.** Không phải phiên chat nào cũng hỏi về cân nặng, nhưng với nhóm người dùng rối loạn ăn uống thì chủ đề cân nặng và ăn uống xuất hiện thường xuyên. |
+| Vì sao? | Nhóm người dùng dễ tổn thương, lời khuyên sai lại đúng vào hành vi bệnh lý, và bot được định làm **kênh thay thế** cho người thật nên không còn lớp con người phía sau. **Giới hạn bằng chứng:** đánh giá Scale và Frequency là suy luận của tôi, vì NEDA chưa công bố số phiên chat hoặc số người bị ảnh hưởng. |
 
 ---
 
-## 3. Harm Map Worksheet
+### 3. Case study 2 — ChatGPT gợi ý thay muối ăn bằng natri bromua, người dùng ngộ độc bromua
 
-Bảng theo mẫu **Harm Map Worksheet — slide trang 25**. Mỗi case có 3 *high-risk moment*.
+#### Brief Case
 
-- **Layer:** UX · Grounding · Safety · Model.
-- **Severity:** Low / Medium / High / Critical.
-- **Scale, Probability, Frequency:** Low / Medium / High.
-- **Nhãn trong cột "Harm xảy ra là gì?":** 📌 **[Sự kiện]** là hậu quả đã được nguồn ghi nhận; 💭 **[Nhận định]** là hậu quả có thể xảy ra theo đánh giá của em, chưa được ghi nhận.
+- **Tổ chức / sản phẩm AI:** ChatGPT của OpenAI, một chatbot đa dụng **không** được thiết kế cho mục đích y tế. Các tác giả báo cáo ca bệnh cho rằng người bệnh nhiều khả năng đã dùng GPT-3.5 hoặc GPT-4.0.
+- **Thời gian, địa điểm / bối cảnh:** Mỹ (University of Washington, Seattle). Ca bệnh được công bố ngày 05/08/2025. Một người đàn ông 60 tuổi đọc về tác hại của muối ăn (natri clorua) nên muốn loại hẳn clorua khỏi chế độ ăn.
+- **AI được dùng để làm gì:** người dùng tự hỏi ChatGPT nên dùng chất gì thay thế clorua.
+- **Vấn đề hoặc sự kiện đáng chú ý:**
+  - Từ câu trả lời của ChatGPT, người này biết bromua có thể thay clorua, rồi mua **natri bromua** để dùng thay muối ăn.
+  - Ông nhập viện với hoang tưởng, ảo giác, mất ngủ, mụn ở mặt và mất điều hòa vận động; được chẩn đoán **ngộ độc bromua (bromism)**.
+  - Khi các bác sĩ tự hỏi lại ChatGPT 3.5, câu trả lời **vẫn có bromua**, chỉ ghi chung chung "ngữ cảnh rất quan trọng", **không cảnh báo cụ thể về sức khỏe** và **không hỏi người dùng định dùng để làm gì**.
+- **Số liệu có nguồn:**
+  - Dùng natri bromua thay muối trong **3 tháng**.
+  - Nồng độ bromua máu **1.700 mg/L**, trong khi khoảng tham chiếu là **0,9–7,3 mg/L**, tức cao hơn mức trên khoảng **230 lần**.
+  - Nằm viện **3 tuần**.
+  - Nguồn: báo cáo ca bệnh trên Annals of Internal Medicine: Clinical Cases, 2025.
+- **Nguồn:**
+  - *A Case of Bromism Influenced by Use of Artificial Intelligence* — Eichenberger A., Thielke S., Van Buskirk A. — Annals of Internal Medicine: Clinical Cases — 05/08/2025 — https://doi.org/10.7326/aimcc.2024.1260
+  - *Man sought diet advice from ChatGPT and ended up with "bromism"* — Live Science — 08/2025 — https://www.livescience.com/health/food-diet/man-sought-diet-advice-from-chatgpt-and-ended-up-with-bromide-intoxication
+  - *Man who asked ChatGPT about cutting out salt was hospitalized with hallucinations* — NBC News — 08/2025 — https://www.nbcnews.com/tech/tech-news/man-asked-chatgpt-cutting-salt-diet-was-hospitalized-hallucinations-rcna225055
+  - AI Incident Database — Report 6092 — https://incidentdatabase.ai/reports/6092
+- **Phân biệt bằng chứng và nhận định:**
+  - 📌 **Nguồn xác nhận:** người bệnh ngộ độc bromua sau khi tham khảo ChatGPT; nồng độ bromua máu 1.700 mg/L; nằm viện 3 tuần; khi hỏi lại, ChatGPT 3.5 vẫn nhắc tới bromua mà không cảnh báo cụ thể.
+  - 💭 **Chưa rõ:** các bác sĩ **không xem được nguyên văn cuộc hội thoại** của người bệnh, nên không biết chính xác câu hỏi và câu trả lời ban đầu. Người dùng cũng có thể đã hiểu sai ngữ cảnh (bromua thay clorua trong mục đích khác, như tẩy rửa). Đây là **một ca được ghi nhận**, chưa đủ để ước lượng tần suất.
 
-### Harm Map — Case 1: NEDA Tessa
+#### Harm Map Worksheet
 
-| High-risk moment | Stakeholder bị ảnh hưởng | Failure mode | Layer bắt đầu lỗi | Harm xảy ra là gì? | Harm lens | Severity | Scale | Probability | Frequency | Vì sao? |
-|---|---|---|---|---|---|---|---|---|---|---|
-| Người đang mắc hoặc có nguy cơ rối loạn ăn uống hỏi Tessa cách cải thiện sức khỏe, và bot khuyên giảm cân, đếm calo, đo mỡ cơ thể | Người dùng có rối loạn ăn uống; người thân; NEDA | Harmful advice | Safety + Model | 📌 [Sự kiện] Bot khuyên giảm 0,5–1 kg/tuần và đếm calo cho người thử (Sharon Maxwell). 💭 [Nhận định] Người bệnh làm theo có thể tái phát hoặc bệnh nặng hơn | Injury | Critical | Medium | High | Medium | Lời khuyên đi ngược hẳn mục tiêu điều trị của đúng nhóm người dùng mục tiêu. Lỗi bị phát hiện chỉ sau vài lượt thử, nên khả năng gặp phải là cao |
-| Người dùng bày tỏ cảm xúc tiêu cực hoặc dấu hiệu khủng hoảng ("I hate my body") nhưng bot vẫn nói về ăn kiêng và tập luyện, không chuyển sang người thật | Người dùng đang khủng hoảng; người thân | Escalation failure | UX + Safety | 📌 [Sự kiện] Bot không phản hồi phù hợp với câu "I hate my body". 💭 [Nhận định] Người dùng bị chậm tiếp cận hỗ trợ, nhất là khi đường dây nóng do người trực sắp bị đóng | Injury | Critical | Medium | Medium | Low | Không phải phiên chat nào cũng có khủng hoảng, nhưng khi có thì hậu quả có thể đe dọa tính mạng, và lúc đó không còn kênh do con người trực để chuyển sang |
-| Nhà cung cấp (Cass) cập nhật mã của Tessa mà NEDA không biết, khiến bot đưa ra câu trả lời không còn kiểm soát | NEDA; toàn bộ người dùng chatbot; nhân viên đường dây nóng bị cho nghỉ | Uncontrolled model change | Model + Safety | 📌 [Sự kiện] NEDA gỡ Tessa ngày 30/05/2023, bị truyền thông chỉ trích và mất uy tín. 💭 [Nhận định] Toàn bộ người dùng nhận câu trả lời chưa được duyệt trong thời gian bản cập nhật hoạt động | Misinformation / Trust loss | High | High | Medium | Low | Một thay đổi không được kiểm soát ảnh hưởng **cùng lúc** tới mọi người dùng (blast radius rộng). Việc cập nhật không thường xuyên, nhưng thiếu quy trình duyệt thay đổi thì sớm muộn cũng xảy ra |
-
-**Giảm thiểu và human review:**
-- Đặt guardrail chặn các chủ đề giảm cân, calo, BMI, kèm bộ kiểm thử red-team riêng cho nhóm rối loạn ăn uống.
-- Hợp đồng yêu cầu nhà cung cấp **xin duyệt trước mọi thay đổi**; chạy lại bộ kiểm thử sau mỗi bản cập nhật.
-- Chuyên gia lâm sàng duyệt kịch bản trước khi phát hành.
-- Bot **chuyển ngay sang người tư vấn** khi phát hiện dấu hiệu khủng hoảng; không dùng chatbot để thay hoàn toàn kênh hỗ trợ do người trực.
-
-### Harm Map — Case 2: ChatGPT và ngộ độc bromua
-
-| High-risk moment | Stakeholder bị ảnh hưởng | Failure mode | Layer bắt đầu lỗi | Harm xảy ra là gì? | Harm lens | Severity | Scale | Probability | Frequency | Vì sao? |
-|---|---|---|---|---|---|---|---|---|---|---|
-| Người dùng hỏi chatbot nên dùng chất gì thay clorua (muối ăn) trong chế độ ăn, và bot gợi ý bromua mà không cảnh báo độc tính | Người dùng trực tiếp; gia đình; bệnh viện điều trị; nhà phát triển chatbot | Harmful advice (đúng về hóa học, sai ngữ cảnh ăn uống) | Grounding + Safety | 📌 [Sự kiện] Người đàn ông 60 tuổi dùng natri bromua 3 tháng, bromua máu 1.700 mg/L (bình thường 0,9–7,3), có hoang tưởng và ảo giác, nằm viện 3 tuần | Injury | Critical | Low | Low | Low | Hậu quả có thể gây tử vong. Đây là một ca được ghi nhận và cần người dùng tự thực hiện nhiều bước, nhưng khi kiểm tra lại, các bác sĩ vẫn nhận được câu trả lời có bromua, nên lỗi lặp lại được |
-| Câu hỏi về sức khỏe hoặc dinh dưỡng nhưng bot không hỏi lại mục đích, không cảnh báo cụ thể, không khuyên gặp bác sĩ | Người dùng tự tìm lời khuyên sức khỏe trên chatbot đa dụng | Escalation failure | UX + Safety | 📌 [Sự kiện] Khi bác sĩ hỏi lại, câu trả lời chỉ ghi chung chung "ngữ cảnh rất quan trọng", không hỏi lý do. 💭 [Nhận định] Người dùng tự thử nghiệm trên cơ thể mình mà không có ai giám sát | Injury / Misinformation | High | High | Medium | Medium | Chatbot đa dụng có lượng người dùng rất lớn và câu hỏi sức khỏe rất phổ biến. Giao diện trò chuyện tạo cảm giác như đang được chuyên gia tư vấn, nên lời cảnh báo chung chung dễ bị bỏ qua |
-| 💭 *Kịch bản giả định, liên hệ P-110:* bệnh nhân bệnh thận mạn hoặc tăng huyết áp hỏi chatbot "muối thay thế", và bot gợi ý muối kali mà không biết người dùng có bệnh nền | Bệnh nhân có bệnh nền; người chăm sóc | Harmful advice do thiếu ngữ cảnh hồ sơ bệnh | Grounding | 💭 [Nhận định — **chưa xảy ra, chưa có nguồn ghi nhận**] Nguy cơ tăng kali máu ở người suy thận, có thể gây rối loạn nhịp tim | Injury | Critical | Medium | Medium | Medium | Lời khuyên "giảm natri" đúng với người bình thường nhưng có thể nguy hiểm với người bệnh thận. Chatbot đa dụng không có hồ sơ bệnh nên không phân biệt được hai trường hợp này |
-
-**Giảm thiểu và human review:**
-- Câu hỏi về ăn uống hoặc sức khỏe thì bot **hỏi lại mục đích** trước khi trả lời.
-- Đối chiếu với danh sách **chất không an toàn khi ăn uống** (chặn cứng, không phụ thuộc LLM).
-- Cảnh báo **cụ thể**, không chỉ ghi "ngữ cảnh rất quan trọng".
-- Chatbot đa dụng không thể có người duyệt từng câu trả lời. 💭 [Nhận định] Vì vậy, tư vấn dinh dưỡng cho người bệnh phải nằm trong sản phẩm chuyên biệt có hồ sơ bệnh và **chuyên gia dinh dưỡng duyệt trước**, như cách P-110 đang làm.
-
-### Harm Map — Case 3: Epic Sepsis Model
-
-| High-risk moment | Stakeholder bị ảnh hưởng | Failure mode | Layer bắt đầu lỗi | Harm xảy ra là gì? | Harm lens | Severity | Scale | Probability | Frequency | Vì sao? |
-|---|---|---|---|---|---|---|---|---|---|---|
-| Bệnh nhân nội trú đang tiến triển sepsis nhưng mô hình **không** phát cảnh báo (false negative) | Bệnh nhân; gia đình; bác sĩ; bệnh viện | Missed detection do dataset shift | Model + Grounding | 📌 [Sự kiện] Mô hình bỏ sót 67% ca sepsis (độ nhạy 33%) trong 38.455 lượt nhập viện. 💭 [Nhận định — **nghiên cứu không đo hậu quả lâm sàng**] Điều trị kháng sinh có thể bị chậm, làm tăng nguy cơ tử vong | Injury | Critical | High | High | High | Sepsis đe dọa tính mạng và phụ thuộc vào thời gian điều trị. Mô hình chạy liên tục trên mọi bệnh nhân nội trú ở nhiều bệnh viện, nên lỗi lặp lại hằng ngày |
-| Mô hình cảnh báo cho 18% số bệnh nhân nằm viện, phần lớn là cảnh báo sai, và bác sĩ dần bỏ qua cảnh báo | Bác sĩ, điều dưỡng; bệnh nhân | False positive dẫn tới alert fatigue | UX + Model | 📌 [Sự kiện] PPV chỉ 12%, tức khoảng 88% cảnh báo là sai; cảnh báo phát cho 18% bệnh nhân. 💭 [Nhận định] Nhân viên y tế bỏ qua cả cảnh báo đúng; bệnh nhân có thể dùng kháng sinh không cần thiết | Injury / Resource loss | High | High | High | High | Cảnh báo sai liên tục làm giảm niềm tin vào mọi cảnh báo, và tác động này tích lũy theo thời gian trên toàn bộ ê-kíp |
-| Bệnh viện bật mô hình dựa trên số liệu nhà cung cấp công bố, không tự kiểm chứng trên dữ liệu của mình | Bệnh viện; bệnh nhân; nhà cung cấp (Epic) | Unvalidated deployment / hiệu năng bị công bố cao hơn thực tế | Model + Safety | 📌 [Sự kiện] AUC thực tế 0,63 so với 0,76–0,83 do nhà cung cấp công bố. 💭 [Nhận định] Bệnh viện ra quyết định triển khai dựa trên thông tin hiệu năng sai lệch | Misinformation / Trust loss | High | High | Medium | Medium | Mô hình độc quyền, ít minh bạch và được tích hợp sẵn trong hệ thống bệnh án điện tử nên dễ được bật đại trà. Một sai lệch về hiệu năng lan ra nhiều bệnh viện cùng lúc |
-
-**Giảm thiểu và human review:**
-- Mỗi bệnh viện **tự kiểm chứng (external validation)** trên dữ liệu của mình trước khi bật cảnh báo.
-- Hiệu chỉnh ngưỡng cảnh báo theo từng bệnh viện; theo dõi drift và tỷ lệ cảnh báo bị bỏ qua.
-- Bác sĩ luôn giữ quyền quyết định cuối cùng, cảnh báo chỉ là gợi ý.
-- Hội đồng AI hoặc an toàn người bệnh **duyệt trước khi triển khai** và **đánh giá theo quý** các chỉ số độ nhạy, PPV và tỷ lệ cảnh báo bị bỏ qua.
+| Trường | Phân tích của tôi |
+| --- | --- |
+| High-risk moment | Người dùng hỏi chatbot đa dụng nên dùng chất gì thay clorua (muối ăn) trong chế độ ăn, và bot nêu bromua mà không hỏi lại mục đích, không cảnh báo độc tính, không khuyên gặp bác sĩ. |
+| Stakeholder bị ảnh hưởng | Người dùng trực tiếp; gia đình; bệnh viện và đội điều trị (chi phí, nguồn lực); nhà phát triển chatbot (uy tín, pháp lý); về sau là người bệnh có bệnh nền tự tìm lời khuyên dinh dưỡng trên chatbot. |
+| Failure mode | **Harmful advice:** câu trả lời **đúng về mặt hóa học nhưng sai ngữ cảnh** ăn uống. Kèm **Escalation failure:** không hỏi lại, không chuyển người dùng tới chuyên gia y tế. |
+| Layer bắt đầu lỗi | **Grounding + Safety**, phụ là **UX.** *Grounding:* không xác định được ngữ cảnh "chế độ ăn của con người" và không đối chiếu với tri thức về an toàn thực phẩm. *Safety:* thiếu guardrail cho chủ đề "chất thay thế để ăn uống". *UX:* giao diện trò chuyện tạo cảm giác như đang được chuyên gia tư vấn, còn lời nhắc "ngữ cảnh rất quan trọng" quá chung chung nên dễ bị bỏ qua. Vì không có nguyên văn hội thoại, chưa đủ bằng chứng để loại trừ việc người dùng hiểu sai. |
+| Harm xảy ra là gì? | 📌 **[Đã xảy ra]** Người đàn ông 60 tuổi bị ngộ độc bromua (1.700 mg/L), có biểu hiện loạn thần và nằm viện 3 tuần. 💭 **[Nguy cơ, chưa ghi nhận]** Người có bệnh nền như suy thận hỏi về "muối thay thế" có thể được gợi ý muối kali, gây nguy cơ tăng kali máu, vì chatbot đa dụng không biết hồ sơ bệnh của họ. |
+| Harm lens | **Injury**; phụ: **Misinformation** (thông tin sức khỏe sai ngữ cảnh). |
+| Severity | **Critical.** Ngộ độc bromua gây loạn thần và phải nằm viện dài ngày, có thể nguy hiểm tính mạng. |
+| Scale | **Low** với sự kiện đã ghi nhận (1 ca); **Medium–High** với nguy cơ, vì chatbot đa dụng có lượng người dùng rất lớn và câu hỏi về sức khỏe, dinh dưỡng rất phổ biến (nhận định của tôi). |
+| Probability | **Low–Medium.** Để gây hại cần chuỗi nhiều bước: hỏi đúng kiểu câu, hiểu sai, tự mua hóa chất và dùng lâu dài. Tuy nhiên câu trả lời có vấn đề **lặp lại được** khi các bác sĩ thử lại. |
+| Frequency | **Low** với hậu quả nặng như ca này; câu trả lời thiếu ngữ cảnh về sức khỏe thì có thể gặp **thường xuyên hơn** (nhận định, chưa có số liệu). |
+| Vì sao? | Hậu quả rất nặng nhưng cần nhiều bước mới xảy ra, nên Severity cao trong khi Probability và Frequency thấp hơn. Căn cứ chính là báo cáo ca bệnh đã qua bình duyệt. **Giới hạn bằng chứng:** chỉ có 1 ca, không có nguyên văn hội thoại, và mô hình ChatGPT đã được cập nhật nhiều lần từ đó. |
 
 ---
 
-## 4. Tổng hợp và bài học cho dự án P-110
+### 4. Case study 3 — Epic Sepsis Model bỏ sót 2/3 ca nhiễm khuẩn huyết
+
+#### Brief Case
+
+- **Tổ chức / sản phẩm AI:** Epic Systems, với Epic Sepsis Model (ESM) là mô hình dự đoán độc quyền tích hợp sẵn trong hệ thống bệnh án điện tử Epic, được **hàng trăm bệnh viện** tại Mỹ sử dụng.
+- **Thời gian, địa điểm / bối cảnh:** Michigan Medicine (University of Michigan), Mỹ. Dữ liệu từ 12/2018 đến 10/2019; nghiên cứu công bố ngày 21/06/2021.
+- **AI được dùng để làm gì:** tự động cảnh báo sớm cho bác sĩ khi bệnh nhân nội trú có nguy cơ nhiễm khuẩn huyết (sepsis), để điều trị kháng sinh kịp thời.
+- **Vấn đề hoặc sự kiện đáng chú ý:** khi được kiểm chứng độc lập (external validation), mô hình cho kết quả **kém hơn nhiều so với công bố của nhà cung cấp**. Nó vừa bỏ sót phần lớn ca sepsis, vừa phát rất nhiều cảnh báo sai, gây nguy cơ **alert fatigue**.
+- **Số liệu có nguồn** (JAMA Internal Medicine, 2021):
+  - Mẫu nghiên cứu: **27.697 bệnh nhân**, **38.455 lượt nhập viện**.
+  - **AUC 0,63**, trong khi nhà cung cấp công bố 0,76–0,83.
+  - Độ nhạy **33%**, PPV **12%**.
+  - **Bỏ sót 67%** bệnh nhân sepsis nhưng **phát cảnh báo cho 18%** tổng số bệnh nhân nằm viện.
+  - Chỉ phát hiện thêm **7%** số ca sepsis mà bác sĩ chưa kịp điều trị kịp thời.
+- **Nguồn:**
+  - *External Validation of a Widely Implemented Proprietary Sepsis Prediction Model in Hospitalized Patients* — Wong A. et al. — JAMA Internal Medicine — 21/06/2021 — https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2781313 (mục Results)
+  - *Popular sepsis prediction tool less accurate than claimed* — Michigan Medicine — 06/2021 — https://michiganmedicine.org/health-lab/popular-sepsis-prediction-tool-less-accurate-claimed
+  - *Popular sepsis prediction model works substantially worse than claimed* — MedCity News — 06/2021 — https://medcitynews.com/2021/06/popular-sepsis-prediction-model-works-substantially-worse-than-claimed-researchers-find
+- **Phân biệt bằng chứng và nhận định:**
+  - 📌 **Nguồn xác nhận:** các chỉ số AUC, độ nhạy, PPV, tỷ lệ bỏ sót và tỷ lệ cảnh báo **tại một hệ thống bệnh viện** (Michigan Medicine).
+  - 💭 **Tôi suy luận / chưa rõ:** nghiên cứu **không đo hậu quả lâm sàng** như tử vong hay điều trị chậm do mô hình. Kết quả có thể khác ở bệnh viện khác. Epic đã phản biện về cách chọn ngưỡng cảnh báo trong nghiên cứu.
+
+#### Harm Map Worksheet
+
+| Trường | Phân tích của tôi |
+| --- | --- |
+| High-risk moment | Bệnh nhân nội trú đang tiến triển sepsis nhưng mô hình **không** phát cảnh báo; đồng thời bác sĩ phải nhận rất nhiều cảnh báo sai nên dần bỏ qua cả cảnh báo đúng. |
+| Stakeholder bị ảnh hưởng | Bệnh nhân nội trú và gia đình; bác sĩ, điều dưỡng (quá tải cảnh báo); bệnh viện (trách nhiệm, chi phí); nhà cung cấp Epic (uy tín). |
+| Failure mode | **Missed detection** (false negative) do **dataset shift** hoặc khả năng tổng quát hóa kém; kèm **false positive gây alert fatigue**; gốc rễ là **triển khai khi chưa kiểm chứng** và hiệu năng được công bố cao hơn thực tế. |
+| Layer bắt đầu lỗi | **Model + Grounding**, phụ là **UX.** *Model:* mô hình độc quyền, ít minh bạch, hiệu năng thực tế thấp hơn công bố. *Grounding:* dữ liệu và cách ghi chép ở từng bệnh viện khác với dữ liệu lúc huấn luyện. *UX:* cảnh báo cho 18% bệnh nhân làm loãng sự chú ý của ê-kíp. |
+| Harm xảy ra là gì? | 📌 **[Đã xảy ra, ở mức đo lường]** Tại Michigan Medicine, mô hình bỏ sót 67% ca sepsis, khoảng 88% cảnh báo là sai (PPV 12%), và cảnh báo phát cho 18% bệnh nhân. 💭 **[Nguy cơ, nghiên cứu không đo]** Điều trị kháng sinh có thể bị chậm, làm tăng nguy cơ tử vong; dùng kháng sinh không cần thiết; nhân viên y tế mất niềm tin vào hệ thống cảnh báo. |
+| Harm lens | **Injury**; phụ: **Misinformation** (thông tin hiệu năng sai lệch khi ra quyết định triển khai). |
+| Severity | **Critical.** Sepsis đe dọa tính mạng và rất phụ thuộc vào thời gian điều trị. |
+| Scale | **High.** Mô hình chạy liên tục trên **mọi bệnh nhân nội trú** và được tích hợp ở **hàng trăm bệnh viện**; nghiên cứu riêng một hệ thống đã có 38.455 lượt nhập viện. |
+| Probability | **High.** Độ nhạy chỉ 33% nghĩa là bỏ sót là kết quả thường gặp, không phải ngoại lệ. |
+| Frequency | **High.** Mô hình đánh giá bệnh nhân liên tục mỗi ngày, nên lỗi bỏ sót và cảnh báo sai lặp lại hằng ngày. |
+| Vì sao? | Các đánh giá dựa trên số liệu đo trực tiếp trong nghiên cứu JAMA đã qua bình duyệt, với cỡ mẫu lớn. **Giới hạn bằng chứng:** chỉ một hệ thống bệnh viện; không có số liệu về hậu quả lâm sàng; nhà cung cấp phản biện cách đặt ngưỡng cảnh báo. |
+
+---
+
+### 5. Tổng hợp và bài học cho dự án P-110
 
 | | Case 1 — Tessa | Case 2 — ChatGPT/bromua | Case 3 — Epic Sepsis |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Layer chính | Safety | Grounding | Model |
 | Tác hại đã ghi nhận | Lời khuyên có hại; chatbot bị gỡ | Ngộ độc, nằm viện 3 tuần | Bỏ sót 67% ca sepsis |
 | Bài học | Kiểm soát mọi thay đổi của nhà cung cấp và mô hình | Hỏi rõ ngữ cảnh và cảnh báo cụ thể | Kiểm chứng tại chỗ trước khi tin số liệu nhà cung cấp |
 
 💭 **[Nhận định] Áp dụng cho P-110 — AI Nutrition Agent:**
-1. **Human-in-the-loop bắt buộc** (từ Case 1 và 2): P-110 đã thiết kế để mọi thực đơn do agent sinh ra dừng ở trạng thái `PENDING_REVIEW` cho tới khi chuyên gia dinh dưỡng duyệt. Cần giữ nguyên tắc **không có đường đi nào bỏ qua bước duyệt**.
-2. **Grounding và trích dẫn** (từ Case 2): cảnh báo dinh dưỡng của P-110 dựa trên guideline (RAG) và có trích nguồn. Nên bổ sung danh sách **chất hoặc thực phẩm không an toàn** để chặn cứng các gợi ý thay thế nguy hiểm, không phụ thuộc vào LLM.
-3. **Kiểm soát thay đổi model và prompt** (từ Case 1): mỗi lần đổi phiên bản LLM (Gemini/OpenAI), prompt hoặc chỉ mục guideline, phải **chạy lại bộ eval an toàn** trước khi phát hành.
-4. **Kiểm chứng trên dữ liệu thật trước khi mở rộng** (từ Case 3): kết quả eval trên hồ sơ demo `p_01`–`p_07` **chưa đủ** để kết luận hệ thống an toàn với bệnh nhân thật. Cần thử nghiệm có giám sát và theo dõi tỷ lệ cảnh báo sai hoặc bị bỏ qua để tránh alert fatigue cho người chăm sóc.
-5. **Dữ liệu nhạy cảm**: hồ sơ bệnh nền và thuốc đang dùng là dữ liệu sức khỏe nhạy cảm, nên cần xin đồng ý rõ ràng, giới hạn quyền truy cập và lưu nhật ký truy cập.
+1. **Human-in-the-loop bắt buộc** (từ Case 1 và 2): mọi thực đơn do agent sinh ra dừng ở trạng thái `PENDING_REVIEW` cho tới khi chuyên gia dinh dưỡng duyệt. Cần giữ nguyên tắc **không có đường đi nào bỏ qua bước duyệt**.
+2. **Grounding và trích dẫn** (từ Case 2): cảnh báo dựa trên guideline (RAG) và có trích nguồn. Nên bổ sung danh sách **chất hoặc thực phẩm không an toàn** để chặn cứng các gợi ý thay thế nguy hiểm, không phụ thuộc vào LLM. Hồ sơ bệnh nền phải được đưa vào khi kiểm tra, để tránh trường hợp gợi ý muối kali cho người suy thận.
+3. **Kiểm soát thay đổi model và prompt** (từ Case 1): mỗi lần đổi phiên bản LLM, prompt hoặc chỉ mục guideline, phải **chạy lại bộ eval an toàn** trước khi phát hành.
+4. **Kiểm chứng trên dữ liệu thật trước khi mở rộng** (từ Case 3): eval trên hồ sơ demo **chưa đủ** để kết luận hệ thống an toàn với bệnh nhân thật. Cần thử nghiệm có giám sát và theo dõi tỷ lệ cảnh báo sai hoặc bị bỏ qua để tránh alert fatigue cho người chăm sóc.
+5. **Dữ liệu nhạy cảm:** hồ sơ bệnh nền và thuốc đang dùng là dữ liệu sức khỏe nhạy cảm, nên cần xin đồng ý rõ ràng, giới hạn quyền truy cập và lưu nhật ký truy cập.
