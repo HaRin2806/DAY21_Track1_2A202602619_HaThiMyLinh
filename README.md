@@ -94,43 +94,54 @@ Ba case dưới đây cùng thuộc ngành y tế và trải dài từ AI mà ng
 
 ## 3. Harm Map Worksheet
 
-Các lớp hệ thống (Layer): **UX** (giao diện, cách trình bày, luồng tương tác) · **Grounding** (dữ liệu, ngữ cảnh, nguồn tri thức) · **Safety** (guardrail, kiểm duyệt, quy trình giám sát) · **Model** (bản thân mô hình).
+Bảng theo mẫu **Harm Map Worksheet — slide trang 25**. Mỗi case có 3 *high-risk moment*.
+
+- **Layer:** UX · Grounding · Safety · Model.
+- **Severity:** Low / Medium / High / Critical.
+- **Scale, Probability, Frequency:** Low / Medium / High.
+- **Nhãn trong cột "Harm xảy ra là gì?":** 📌 **[Sự kiện]** là hậu quả đã được nguồn ghi nhận; 💭 **[Nhận định]** là hậu quả có thể xảy ra theo đánh giá của em, chưa được ghi nhận.
 
 ### Harm Map — Case 1: NEDA Tessa
 
-| Mục | Nội dung |
-|---|---|
-| **Failure mode** | Đưa lời khuyên **có hại cho đúng nhóm người dùng mà hệ thống được tạo ra để bảo vệ**: khuyên giảm cân và đếm calo cho người rối loạn ăn uống; không phản hồi phù hợp khi người dùng bày tỏ cảm xúc tiêu cực về cơ thể. |
-| **Layer khởi phát** | **Safety** (chính): không có guardrail chặn chủ đề giảm cân hoặc ăn kiêng; nhà cung cấp thay đổi hệ thống mà không có quy trình kiểm soát thay đổi (change management) và không kiểm thử lại trước khi phát hành. **Model** (phụ): thành phần sinh câu trả lời không còn bị giới hạn trong kịch bản đã được duyệt. |
-| **Ai bị ảnh hưởng** | 📌 [Sự kiện] Người dùng thử như Sharon Maxwell đã nhận lời khuyên giảm cân. 📌 [Sự kiện] Nhân viên đường dây nóng bị cho nghỉ việc. 💭 [Nhận định] Người đang mắc hoặc có nguy cơ rối loạn ăn uống trong khoảng gần 70.000 người từng liên hệ đường dây nóng mỗi năm. |
-| **Harm (thiệt hại)** | 📌 [Sự kiện] NEDA phải gỡ chatbot, bị truyền thông chỉ trích rộng rãi và mất uy tín. 💭 [Nhận định — **chưa có nguồn ghi nhận**] Người dùng dễ tổn thương có thể tái phát bệnh nếu làm theo lời khuyên; người đang khủng hoảng mất kênh hỗ trợ là con người. |
-| **Mức độ / khả năng xảy ra** | Mức độ: **Cao**, vì đối tượng là nhóm dễ tổn thương và rối loạn ăn uống có thể đe dọa tính mạng. Khả năng: **Cao**, vì lỗi được phát hiện chỉ sau vài lần thử. |
-| **Biện pháp giảm thiểu** | Danh sách chủ đề bị cấm (giảm cân, calo, BMI) kèm bộ kiểm thử red-team riêng cho nhóm rối loạn ăn uống; hợp đồng bắt buộc nhà cung cấp **thông báo và xin duyệt trước mọi thay đổi**; chạy lại bộ kiểm thử sau mỗi bản cập nhật; **không** dùng chatbot thay hoàn toàn kênh hỗ trợ do người trực. |
-| **Human review** | Chuyên gia lâm sàng về rối loạn ăn uống **duyệt kịch bản và mọi thay đổi** trước khi phát hành; chatbot **chuyển ngay cho người tư vấn** khi phát hiện dấu hiệu khủng hoảng; đội ngũ chuyên môn định kỳ đọc lại mẫu hội thoại thật. |
+| High-risk moment | Stakeholder bị ảnh hưởng | Failure mode | Layer bắt đầu lỗi | Harm xảy ra là gì? | Harm lens | Severity | Scale | Probability | Frequency | Vì sao? |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Người đang mắc hoặc có nguy cơ rối loạn ăn uống hỏi Tessa cách cải thiện sức khỏe, và bot khuyên giảm cân, đếm calo, đo mỡ cơ thể | Người dùng có rối loạn ăn uống; người thân; NEDA | Harmful advice | Safety + Model | 📌 [Sự kiện] Bot khuyên giảm 0,5–1 kg/tuần và đếm calo cho người thử (Sharon Maxwell). 💭 [Nhận định] Người bệnh làm theo có thể tái phát hoặc bệnh nặng hơn | Injury | Critical | Medium | High | Medium | Lời khuyên đi ngược hẳn mục tiêu điều trị của đúng nhóm người dùng mục tiêu. Lỗi bị phát hiện chỉ sau vài lượt thử, nên khả năng gặp phải là cao |
+| Người dùng bày tỏ cảm xúc tiêu cực hoặc dấu hiệu khủng hoảng ("I hate my body") nhưng bot vẫn nói về ăn kiêng và tập luyện, không chuyển sang người thật | Người dùng đang khủng hoảng; người thân | Escalation failure | UX + Safety | 📌 [Sự kiện] Bot không phản hồi phù hợp với câu "I hate my body". 💭 [Nhận định] Người dùng bị chậm tiếp cận hỗ trợ, nhất là khi đường dây nóng do người trực sắp bị đóng | Injury | Critical | Medium | Medium | Low | Không phải phiên chat nào cũng có khủng hoảng, nhưng khi có thì hậu quả có thể đe dọa tính mạng, và lúc đó không còn kênh do con người trực để chuyển sang |
+| Nhà cung cấp (Cass) cập nhật mã của Tessa mà NEDA không biết, khiến bot đưa ra câu trả lời không còn kiểm soát | NEDA; toàn bộ người dùng chatbot; nhân viên đường dây nóng bị cho nghỉ | Uncontrolled model change | Model + Safety | 📌 [Sự kiện] NEDA gỡ Tessa ngày 30/05/2023, bị truyền thông chỉ trích và mất uy tín. 💭 [Nhận định] Toàn bộ người dùng nhận câu trả lời chưa được duyệt trong thời gian bản cập nhật hoạt động | Misinformation / Trust loss | High | High | Medium | Low | Một thay đổi không được kiểm soát ảnh hưởng **cùng lúc** tới mọi người dùng (blast radius rộng). Việc cập nhật không thường xuyên, nhưng thiếu quy trình duyệt thay đổi thì sớm muộn cũng xảy ra |
+
+**Giảm thiểu và human review:**
+- Đặt guardrail chặn các chủ đề giảm cân, calo, BMI, kèm bộ kiểm thử red-team riêng cho nhóm rối loạn ăn uống.
+- Hợp đồng yêu cầu nhà cung cấp **xin duyệt trước mọi thay đổi**; chạy lại bộ kiểm thử sau mỗi bản cập nhật.
+- Chuyên gia lâm sàng duyệt kịch bản trước khi phát hành.
+- Bot **chuyển ngay sang người tư vấn** khi phát hiện dấu hiệu khủng hoảng; không dùng chatbot để thay hoàn toàn kênh hỗ trợ do người trực.
 
 ### Harm Map — Case 2: ChatGPT và ngộ độc bromua
 
-| Mục | Nội dung |
-|---|---|
-| **Failure mode** | Câu trả lời **đúng về mặt hóa học nhưng sai ngữ cảnh**: bromua có thể thay clorua trong một số ứng dụng như tẩy rửa, nhưng **không** dùng được trong thực phẩm. Mô hình không hỏi người dùng định dùng để làm gì và không cảnh báo độc tính. |
-| **Layer khởi phát** | **Grounding** (chính): mô hình không xác định được ngữ cảnh "chế độ ăn của con người" và không đối chiếu với tri thức về an toàn thực phẩm. **Safety**: không có guardrail cho chủ đề "chất thay thế để ăn uống". **UX**: giao diện trò chuyện tạo cảm giác như đang được chuyên gia tư vấn, và lời cảnh báo chung chung rất dễ bị bỏ qua. |
-| **Ai bị ảnh hưởng** | 📌 [Sự kiện] Người đàn ông 60 tuổi trong báo cáo ca bệnh. 💭 [Nhận định] Bất kỳ người dùng nào tự tìm lời khuyên dinh dưỡng trên chatbot đa dụng, đặc biệt là người có bệnh nền phải kiêng natri (tăng huyết áp, bệnh thận mạn). |
-| **Harm (thiệt hại)** | 📌 [Sự kiện] Ngộ độc bromua (bromua máu 1.700 mg/L), rối loạn tâm thần, **nằm viện 3 tuần**. 💭 [Nhận định] Chi phí điều trị và nguy cơ để lại di chứng thần kinh; người dùng mất niềm tin vào thông tin sức khỏe do AI cung cấp. |
-| **Mức độ / khả năng xảy ra** | Mức độ: **Rất cao**, có thể gây tử vong. Khả năng: **Trung bình**, vì cần người dùng tự làm theo nhiều bước, nhưng số người dùng chatbot rất lớn nên tổng rủi ro không nhỏ. |
-| **Biện pháp giảm thiểu** | Khi câu hỏi liên quan đến ăn uống hoặc sức khỏe, mô hình **hỏi lại mục đích** trước khi trả lời; đối chiếu với danh sách chất không an toàn cho người dùng ăn uống; cảnh báo **cụ thể**, không chỉ ghi "ngữ cảnh rất quan trọng"; khuyến nghị người dùng hỏi bác sĩ hoặc chuyên gia dinh dưỡng khi muốn thay đổi chế độ ăn. |
-| **Human review** | Chatbot đa dụng không thể có người duyệt từng câu trả lời. 💭 [Nhận định] Vì vậy, chức năng tư vấn dinh dưỡng cho người bệnh **phải** nằm trong sản phẩm chuyên biệt có chuyên gia dinh dưỡng duyệt trước, như cách P-110 đang làm. Với chatbot đa dụng, cần đội ngũ y khoa tham gia red-team định kỳ các chủ đề sức khỏe. |
+| High-risk moment | Stakeholder bị ảnh hưởng | Failure mode | Layer bắt đầu lỗi | Harm xảy ra là gì? | Harm lens | Severity | Scale | Probability | Frequency | Vì sao? |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Người dùng hỏi chatbot nên dùng chất gì thay clorua (muối ăn) trong chế độ ăn, và bot gợi ý bromua mà không cảnh báo độc tính | Người dùng trực tiếp; gia đình; bệnh viện điều trị; nhà phát triển chatbot | Harmful advice (đúng về hóa học, sai ngữ cảnh ăn uống) | Grounding + Safety | 📌 [Sự kiện] Người đàn ông 60 tuổi dùng natri bromua 3 tháng, bromua máu 1.700 mg/L (bình thường 0,9–7,3), có hoang tưởng và ảo giác, nằm viện 3 tuần | Injury | Critical | Low | Low | Low | Hậu quả có thể gây tử vong. Đây là một ca được ghi nhận và cần người dùng tự thực hiện nhiều bước, nhưng khi kiểm tra lại, các bác sĩ vẫn nhận được câu trả lời có bromua, nên lỗi lặp lại được |
+| Câu hỏi về sức khỏe hoặc dinh dưỡng nhưng bot không hỏi lại mục đích, không cảnh báo cụ thể, không khuyên gặp bác sĩ | Người dùng tự tìm lời khuyên sức khỏe trên chatbot đa dụng | Escalation failure | UX + Safety | 📌 [Sự kiện] Khi bác sĩ hỏi lại, câu trả lời chỉ ghi chung chung "ngữ cảnh rất quan trọng", không hỏi lý do. 💭 [Nhận định] Người dùng tự thử nghiệm trên cơ thể mình mà không có ai giám sát | Injury / Misinformation | High | High | Medium | Medium | Chatbot đa dụng có lượng người dùng rất lớn và câu hỏi sức khỏe rất phổ biến. Giao diện trò chuyện tạo cảm giác như đang được chuyên gia tư vấn, nên lời cảnh báo chung chung dễ bị bỏ qua |
+| 💭 *Kịch bản giả định, liên hệ P-110:* bệnh nhân bệnh thận mạn hoặc tăng huyết áp hỏi chatbot "muối thay thế", và bot gợi ý muối kali mà không biết người dùng có bệnh nền | Bệnh nhân có bệnh nền; người chăm sóc | Harmful advice do thiếu ngữ cảnh hồ sơ bệnh | Grounding | 💭 [Nhận định — **chưa xảy ra, chưa có nguồn ghi nhận**] Nguy cơ tăng kali máu ở người suy thận, có thể gây rối loạn nhịp tim | Injury | Critical | Medium | Medium | Medium | Lời khuyên "giảm natri" đúng với người bình thường nhưng có thể nguy hiểm với người bệnh thận. Chatbot đa dụng không có hồ sơ bệnh nên không phân biệt được hai trường hợp này |
+
+**Giảm thiểu và human review:**
+- Câu hỏi về ăn uống hoặc sức khỏe thì bot **hỏi lại mục đích** trước khi trả lời.
+- Đối chiếu với danh sách **chất không an toàn khi ăn uống** (chặn cứng, không phụ thuộc LLM).
+- Cảnh báo **cụ thể**, không chỉ ghi "ngữ cảnh rất quan trọng".
+- Chatbot đa dụng không thể có người duyệt từng câu trả lời. 💭 [Nhận định] Vì vậy, tư vấn dinh dưỡng cho người bệnh phải nằm trong sản phẩm chuyên biệt có hồ sơ bệnh và **chuyên gia dinh dưỡng duyệt trước**, như cách P-110 đang làm.
 
 ### Harm Map — Case 3: Epic Sepsis Model
 
-| Mục | Nội dung |
-|---|---|
-| **Failure mode** | **Hiệu năng sụt giảm khi áp dụng ở bệnh viện khác (dataset shift)** và không được kiểm chứng độc lập trước khi triển khai: vừa bỏ sót ca bệnh (false negative), vừa cảnh báo sai quá nhiều (false positive) dẫn tới **alert fatigue**. |
-| **Layer khởi phát** | **Model** (chính): mô hình độc quyền, hiệu năng thực tế thấp hơn công bố và cách xây dựng không minh bạch. **Grounding**: dữ liệu và quy trình ghi chép ở từng bệnh viện khác với dữ liệu lúc huấn luyện. **UX**: cảnh báo cho 18% số bệnh nhân nằm viện làm loãng sự chú ý của bác sĩ. |
-| **Ai bị ảnh hưởng** | 📌 [Sự kiện] Bệnh nhân nội trú tại Michigan Medicine: mô hình bỏ sót 67% ca sepsis trong mẫu nghiên cứu. 💭 [Nhận định] Bác sĩ và điều dưỡng chịu quá tải cảnh báo; bệnh nhân tại các bệnh viện khác dùng ESM mà chưa tự kiểm chứng. |
-| **Harm (thiệt hại)** | 📌 [Sự kiện] Mô hình không phát hiện được 2/3 số ca sepsis; tạo ra rất nhiều cảnh báo sai (PPV 12%). 💭 [Nhận định — **nghiên cứu không đo trực tiếp hậu quả lâm sàng**] Có thể làm chậm điều trị kháng sinh, tăng nguy cơ tử vong, hoặc dẫn tới dùng kháng sinh không cần thiết. |
-| **Mức độ / khả năng xảy ra** | Mức độ: **Rất cao**, vì sepsis là tình trạng đe dọa tính mạng và phụ thuộc vào thời gian điều trị. Khả năng: **Cao**, do mô hình được triển khai rộng ở nhiều bệnh viện. |
-| **Biện pháp giảm thiểu** | **Kiểm chứng độc lập (external validation) tại từng bệnh viện** trước khi bật cảnh báo; nhà cung cấp phải minh bạch về hiệu năng; hiệu chỉnh ngưỡng cảnh báo theo từng bệnh viện; theo dõi độ trôi hiệu năng (drift) sau triển khai; đo tỷ lệ cảnh báo bị bỏ qua. |
-| **Human review** | Bác sĩ luôn giữ quyền quyết định cuối cùng, cảnh báo chỉ là gợi ý. Hội đồng AI hoặc an toàn người bệnh của bệnh viện **duyệt trước khi triển khai** và **đánh giá định kỳ** (theo quý) độ nhạy, PPV và tỷ lệ bỏ qua cảnh báo. |
+| High-risk moment | Stakeholder bị ảnh hưởng | Failure mode | Layer bắt đầu lỗi | Harm xảy ra là gì? | Harm lens | Severity | Scale | Probability | Frequency | Vì sao? |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Bệnh nhân nội trú đang tiến triển sepsis nhưng mô hình **không** phát cảnh báo (false negative) | Bệnh nhân; gia đình; bác sĩ; bệnh viện | Missed detection do dataset shift | Model + Grounding | 📌 [Sự kiện] Mô hình bỏ sót 67% ca sepsis (độ nhạy 33%) trong 38.455 lượt nhập viện. 💭 [Nhận định — **nghiên cứu không đo hậu quả lâm sàng**] Điều trị kháng sinh có thể bị chậm, làm tăng nguy cơ tử vong | Injury | Critical | High | High | High | Sepsis đe dọa tính mạng và phụ thuộc vào thời gian điều trị. Mô hình chạy liên tục trên mọi bệnh nhân nội trú ở nhiều bệnh viện, nên lỗi lặp lại hằng ngày |
+| Mô hình cảnh báo cho 18% số bệnh nhân nằm viện, phần lớn là cảnh báo sai, và bác sĩ dần bỏ qua cảnh báo | Bác sĩ, điều dưỡng; bệnh nhân | False positive dẫn tới alert fatigue | UX + Model | 📌 [Sự kiện] PPV chỉ 12%, tức khoảng 88% cảnh báo là sai; cảnh báo phát cho 18% bệnh nhân. 💭 [Nhận định] Nhân viên y tế bỏ qua cả cảnh báo đúng; bệnh nhân có thể dùng kháng sinh không cần thiết | Injury / Resource loss | High | High | High | High | Cảnh báo sai liên tục làm giảm niềm tin vào mọi cảnh báo, và tác động này tích lũy theo thời gian trên toàn bộ ê-kíp |
+| Bệnh viện bật mô hình dựa trên số liệu nhà cung cấp công bố, không tự kiểm chứng trên dữ liệu của mình | Bệnh viện; bệnh nhân; nhà cung cấp (Epic) | Unvalidated deployment / hiệu năng bị công bố cao hơn thực tế | Model + Safety | 📌 [Sự kiện] AUC thực tế 0,63 so với 0,76–0,83 do nhà cung cấp công bố. 💭 [Nhận định] Bệnh viện ra quyết định triển khai dựa trên thông tin hiệu năng sai lệch | Misinformation / Trust loss | High | High | Medium | Medium | Mô hình độc quyền, ít minh bạch và được tích hợp sẵn trong hệ thống bệnh án điện tử nên dễ được bật đại trà. Một sai lệch về hiệu năng lan ra nhiều bệnh viện cùng lúc |
+
+**Giảm thiểu và human review:**
+- Mỗi bệnh viện **tự kiểm chứng (external validation)** trên dữ liệu của mình trước khi bật cảnh báo.
+- Hiệu chỉnh ngưỡng cảnh báo theo từng bệnh viện; theo dõi drift và tỷ lệ cảnh báo bị bỏ qua.
+- Bác sĩ luôn giữ quyền quyết định cuối cùng, cảnh báo chỉ là gợi ý.
+- Hội đồng AI hoặc an toàn người bệnh **duyệt trước khi triển khai** và **đánh giá theo quý** các chỉ số độ nhạy, PPV và tỷ lệ cảnh báo bị bỏ qua.
 
 ---
 
