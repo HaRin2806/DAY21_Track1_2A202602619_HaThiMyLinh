@@ -3,18 +3,20 @@
 - Họ và tên: Hà Thị Mỹ Linh
 - MSSV / mã học viên: 2A202602619
 - Lớp: K04-L34-P2 · Track 1: AI Product Management
-- Ngành đã chọn: **Y tế (Healthcare)** — trọng tâm là AI tư vấn sức khỏe/dinh dưỡng và AI hỗ trợ quyết định lâm sàng. Đây cũng là ngành của dự án nhóm **P-110 — AI Nutrition Agent** (tư vấn dinh dưỡng cho bệnh nhân tiểu đường, bệnh thận mạn, tim mạch, gout).
+- Ngành đã chọn: **Y tế / symptom checker / health assistant** — AI kiểm tra triệu chứng và trợ lý sức khỏe mà người dùng tương tác trực tiếp. Đây cũng là ngành của dự án nhóm **P-110 — AI Nutrition Agent** (trợ lý dinh dưỡng cho bệnh nhân tiểu đường, bệnh thận mạn, tim mạch, gout).
 
 > **Quy ước ghi chú:** 📌 **[Sự kiện]** = thông tin đã được nguồn công bố (có link). 💭 **[Nhận định]** = phân tích hoặc suy luận của tôi, **không** phải hậu quả đã được ghi nhận.
 
 ### 1. Industry Risk Snapshot
 
+*Các mức Thấp / Trung bình / Cao dưới đây là đánh giá định tính phục vụ bài tập, kèm căn cứ; không phải kết luận phân loại pháp lý.*
+
 | Nội dung | Đánh giá của tôi và lý do |
 | --- | --- |
-| Những tác hại chính có thể xảy ra | **Tổn hại sức khỏe thể chất/tinh thần** cho người bệnh, vì chẩn đoán sai, bỏ sót bệnh, điều trị chậm hoặc làm theo lời khuyên sai (ví dụ ngộ độc). **Phân biệt đối xử** trong tiếp cận chăm sóc khi mô hình bị thiên lệch. **Quá tải và mất niềm tin** của bác sĩ, điều dưỡng do cảnh báo sai (alert fatigue). **Thiệt hại uy tín và pháp lý** cho bệnh viện hoặc tổ chức triển khai. Người bị ảnh hưởng: bệnh nhân, người thân, người chăm sóc, nhân viên y tế, cơ sở y tế. |
-| Mức độ high-stakes | **Cao.** Quyết định ảnh hưởng trực tiếp tới **tính mạng**, và nhiều tác hại **không đảo ngược được** (biến chứng, tử vong). Người dùng thường ở trạng thái dễ tổn thương (bệnh nặng, rối loạn tâm lý, người cao tuổi) và dễ tin vào thông tin nghe "có vẻ y khoa". |
-| Dữ liệu nhạy cảm có thể được sử dụng | Hồ sơ bệnh án, chẩn đoán, bệnh nền, thuốc đang dùng, kết quả xét nghiệm, dị ứng, sức khỏe tâm thần, chỉ số cơ thể (cân nặng, BMI), ảnh bữa ăn, thông tin liên hệ của người bệnh và người chăm sóc. Tại Việt Nam, dữ liệu sức khỏe thuộc nhóm **dữ liệu cá nhân nhạy cảm** (Nghị định 13/2023/NĐ-CP; Luật Bảo vệ dữ liệu cá nhân 2025). *Bài này không dùng dữ liệu thật.* |
-| Nhu cầu human review | **Cao.** **Ai kiểm tra:** bác sĩ hoặc chuyên gia dinh dưỡng có chuyên môn. **Ở bước nào:** (1) **trước** khi đầu ra mang tính chẩn đoán, điều trị hoặc thực đơn đến tay bệnh nhân; (2) **trước khi triển khai** mô hình, bằng cách kiểm chứng trên dữ liệu của chính cơ sở; (3) **sau mỗi lần thay đổi** model hoặc prompt và **định kỳ** sau triển khai; (4) **ngay lập tức** khi có dấu hiệu khẩn cấp hoặc khủng hoảng thì chuyển cho người thật. **Vì sao:** sai sót có thể gây hại không đảo ngược được, và AI không chịu trách nhiệm chuyên môn. |
+| Những tác hại chính có thể xảy ra | **Tổn hại sức khỏe** khi người dùng làm theo lời khuyên sai hoặc thiếu ngữ cảnh (ví dụ ngộ độc, bệnh nặng hơn). **Phân loại sai mức khẩn cấp (triage):** báo "không khẩn cấp" với triệu chứng nguy hiểm khiến người dùng đi khám muộn, hoặc báo động quá mức khiến người dùng đi khám không cần thiết. **Thiên lệch:** kết quả khác nhau theo giới tính hoặc nhóm người dùng. **Thay thế người thật** ở các kênh hỗ trợ cho nhóm dễ tổn thương. **Mất niềm tin** và thiệt hại uy tín cho tổ chức triển khai. Người bị ảnh hưởng: người dùng hoặc bệnh nhân, người thân, người chăm sóc, cơ sở y tế. |
+| Mức độ high-stakes | **Cao.** Người dùng ra quyết định về sức khỏe, như có đi khám hay không, ăn gì, dùng gì, **ngay sau khi** đọc câu trả lời và thường **không có nhân viên y tế ở giữa**. Một số tác hại không đảo ngược được (bỏ lỡ nhồi máu cơ tim, ngộ độc). Người dùng thường đang lo lắng hoặc dễ tổn thương, và có xu hướng tin vào câu trả lời nghe "có vẻ y khoa". |
+| Dữ liệu nhạy cảm có thể được sử dụng | Triệu chứng tự khai, bệnh nền, thuốc đang dùng, dị ứng, kết quả xét nghiệm, sức khỏe tâm thần, chỉ số cơ thể (cân nặng, BMI), ảnh bữa ăn hoặc ảnh tổn thương da, lịch sử hội thoại, thông tin liên hệ. Tại Việt Nam, dữ liệu sức khỏe thuộc nhóm **dữ liệu cá nhân nhạy cảm** (Nghị định 13/2023/NĐ-CP). *Bài này không dùng dữ liệu thật.* |
+| Nhu cầu human review | **Cao.** **Ai kiểm tra:** bác sĩ hoặc chuyên gia dinh dưỡng có chuyên môn. **Ở bước nào:** (1) **trước khi phát hành** — chuyên gia duyệt kịch bản, ngưỡng triage và bộ kiểm thử an toàn, kèm đánh giá độc lập với người dùng thật; (2) **sau mỗi lần thay đổi** model hoặc prompt; (3) **trước khi** kết quả cá nhân hóa như thực đơn hay kế hoạch điều trị đến tay người bệnh; (4) **ngay lập tức** khi có triệu chứng khẩn cấp hoặc dấu hiệu khủng hoảng thì chuyển cho người thật hoặc cấp cứu. **Vì sao:** người dùng hành động trực tiếp theo câu trả lời, và AI không chịu trách nhiệm chuyên môn. |
 
 ---
 
@@ -22,25 +24,31 @@
 
 #### Brief Case
 
-- **Tổ chức / sản phẩm AI:** National Eating Disorders Association (NEDA), tổ chức phi lợi nhuận về rối loạn ăn uống của Mỹ. Chatbot *Tessa* do công ty Cass (trước đây là X2AI) cung cấp và tùy biến.
-- **Thời gian, địa điểm / bối cảnh:** Mỹ. Tessa được triển khai lặng lẽ từ 02/2022. Tháng 5/2023, NEDA cho nhân viên đường dây nóng nghỉ việc và dự định để Tessa thay thế đường dây nóng do người trực từ 01/06/2023.
-- **AI được dùng để làm gì:** chatbot hỗ trợ phòng ngừa và cung cấp thông tin cho người có nguy cơ rối loạn ăn uống.
+- **Tổ chức / sản phẩm AI:** National Eating Disorders Association (NEDA), tổ chức phi lợi nhuận về rối loạn ăn uống của Mỹ. Chatbot *Tessa* ban đầu là chatbot **theo kịch bản (rule-based)** do các chuyên gia rối loạn ăn uống (Dr. Barr Taylor, Dr. Ellen Fitzsimmons-Craft) xây dựng nội dung; công ty **Cass** vận hành nền tảng.
+- **Thời gian, địa điểm / bối cảnh:** Mỹ, 2022–2023.
+  - Tessa ra mắt lặng lẽ từ **02/2022**.
+  - Ngày **31/03/2023**, NEDA báo cho nhân viên đường dây nóng rằng họ sẽ bị cho nghỉ việc. Theo kế hoạch, Tessa thay thế đường dây nóng do người trực từ khoảng **01/06/2023**.
+- **AI được dùng để làm gì:** trợ lý sức khỏe dạng chatbot, cung cấp nội dung phòng ngừa rối loạn ăn uống và hỗ trợ người có nguy cơ.
 - **Vấn đề hoặc sự kiện đáng chú ý:**
-  - Chuyên gia tư vấn Sharon Maxwell thử Tessa và được khuyên **giảm cân, đếm calo, đo mỡ cơ thể**, tức là những hành vi có thể làm rối loạn ăn uống nặng hơn.
-  - Bot cũng không phản hồi phù hợp với các câu như "I hate my body".
-  - NEDA **gỡ Tessa ngày 30/05/2023**. Theo NEDA, nhà cung cấp Cass đã **cập nhật mã của Tessa mà NEDA không biết**.
+  - Cuối 05/2023, chuyên gia tư vấn **Sharon Maxwell** thử Tessa và được khuyên **giảm cân, đếm calo, tạo thâm hụt calo**, tức là những hành vi có thể làm rối loạn ăn uống nặng hơn.
+  - NEDA **vô hiệu hóa Tessa vô thời hạn ngày 30/05/2023**.
+  - Theo NPR, trong năm trước đó **Cass đã bổ sung AI tạo sinh (generative AI)**, giúp Tessa tự tạo câu trả lời mới ngoài kịch bản. NEDA cho rằng mình không được biết; **CEO Cass thì nói thay đổi này nằm trong hợp đồng với NEDA**.
+  - NEDA đã nhận ảnh chụp màn hình phản ánh vấn đề của Tessa từ **10/2022**, tức nhiều tháng trước vụ Maxwell.
 - **Số liệu có nguồn:**
-  - Đường dây nóng của NEDA được **gần 70.000 người** sử dụng trong năm trước sự kiện (NPR, 31/05/2023).
-  - Tessa khuyên người thử giảm **1–2 pound/tuần (khoảng 0,5–1 kg/tuần)** (CNN, 01/06/2023).
-  - Tessa bị gỡ ngày **30/05/2023**, **2 ngày** trước ngày dự kiến thay thế hoàn toàn đường dây nóng.
+  - **Gần 70.000 người** dùng đường dây nóng của NEDA trong năm trước đó. Đường dây nóng do **5–6 nhân viên được trả lương, 2 giám sát** và **90–165 tình nguyện viên** vận hành (NPR, 31/05/2023).
+  - Tessa khuyên Maxwell giảm **1–2 pound/tuần (khoảng 0,5–0,9 kg)** bằng cách thâm hụt **500–1.000 calo/ngày** (NPR, 08/06/2023).
+  - Mốc thời gian: Tessa bị vô hiệu hóa ngày **30/05/2023**, khoảng **2 ngày** trước thời điểm dự kiến thay đường dây nóng; vấn đề đã được báo cho NEDA khoảng **7 tháng** trước đó (10/2022) (NPR).
 - **Nguồn:**
-  - *National Eating Disorders Association phases out human helpline, pivots to chatbot* — NPR — 31/05/2023 — https://www.npr.org/sections/health-shots/2023/05/31/1179244569/national-eating-disorders-association-phases-out-human-helpline-pivots-to-chatbo
-  - NPR transcript — https://www.npr.org/transcripts/1177847298 (mục NEDA cho biết Cass đã cập nhật mã mà NEDA không biết)
+  - *National Eating Disorders Association phases out human helpline, pivots to chatbot* — Kate Wells, NPR — 31/05/2023 — https://www.npr.org/sections/health-shots/2023/05/31/1179244569/national-eating-disorders-association-phases-out-human-helpline-pivots-to-chatbo (bản chữ: https://text.npr.org/1179244569)
+  - *An eating disorders chatbot offered dieting advice, raising fears about AI in health* — NPR — 08/06/2023 — https://www.kunc.org/npr-news/2023-06-08/an-eating-disorders-chatbot-offered-dieting-advice-raising-fears-about-ai-in-health (mục về Cass bổ sung generative AI và ảnh chụp màn hình từ 10/2022)
   - *NEDA takes its AI chatbot offline after complaints of harmful advice* — CNN Business — 01/06/2023 — https://krdo.com/money/cnn-business-consumer/2023/06/01/national-eating-disorders-association-takes-its-ai-chatbot-offline-after-complaints-of-harmful-advice/
   - AI Incident Database — Report 3141 — https://incidentdatabase.ai/reports/3141
 - **Phân biệt bằng chứng và nhận định:**
-  - 📌 **Nguồn xác nhận:** Tessa đã đưa lời khuyên giảm cân và đếm calo; NEDA gỡ bot; theo NEDA, nhà cung cấp đã thay đổi bot mà không báo.
-  - 💭 **Tôi suy luận / chưa rõ:** chưa có nguồn ghi nhận người dùng cụ thể nào **bị tái phát bệnh** vì Tessa. Số người đã nhận câu trả lời có hại chưa được công bố. Chi tiết kỹ thuật của bản cập nhật (có phải thành phần AI tạo sinh hay không) chỉ được nêu qua phát ngôn của NEDA, chưa được kiểm chứng độc lập.
+  - 📌 **Nguồn xác nhận:** Tessa đã khuyên giảm cân và thâm hụt calo cho người thử; NEDA vô hiệu hóa bot; Cass đã bổ sung AI tạo sinh; NEDA nhận phản ánh từ 10/2022.
+  - 💭 **Chưa rõ / tôi suy luận:**
+    - Ai chịu trách nhiệm cho thay đổi đang **còn tranh cãi**: NEDA nói không biết, Cass nói thay đổi nằm trong hợp đồng.
+    - Chưa có nguồn ghi nhận người dùng cụ thể nào **bị tái phát bệnh** vì Tessa.
+    - Số người đã nhận câu trả lời có hại chưa được công bố.
 
 #### Harm Map Worksheet
 
@@ -49,8 +57,8 @@
 | High-risk moment | Người đang mắc hoặc có nguy cơ rối loạn ăn uống hỏi Tessa cách cải thiện sức khỏe hoặc chia sẻ cảm xúc tiêu cực về cơ thể, và bot khuyên giảm cân, đếm calo thay vì hỗ trợ hoặc chuyển cho người tư vấn. |
 | Stakeholder bị ảnh hưởng | Người dùng có rối loạn ăn uống; người thân của họ; NEDA (tổ chức triển khai); nhân viên đường dây nóng bị thay thế; nhà cung cấp Cass. |
 | Failure mode | **Harmful advice** (lời khuyên có hại cho đúng nhóm người dùng mục tiêu) kèm **Escalation failure** (không chuyển sang người thật khi người dùng có dấu hiệu khủng hoảng). |
-| Layer bắt đầu lỗi | **Safety + Model.** *Safety:* không có guardrail chặn chủ đề giảm cân, calo, BMI; không có quy trình kiểm soát thay đổi để nhà cung cấp phải xin duyệt và kiểm thử lại trước khi cập nhật. *Model:* theo NEDA, sau bản cập nhật bot trả lời ngoài kịch bản đã duyệt. Chưa đủ bằng chứng công khai để xác định chính xác thay đổi kỹ thuật là gì. |
-| Harm xảy ra là gì? | 📌 **[Đã xảy ra]** Người thử nhận lời khuyên giảm 0,5–1 kg/tuần và đếm calo; NEDA phải gỡ bot và bị chỉ trích rộng rãi. 💭 **[Nguy cơ, chưa ghi nhận]** Người bệnh làm theo có thể tái phát hoặc bệnh nặng hơn; người đang khủng hoảng mất kênh hỗ trợ là con người. |
+| Layer bắt đầu lỗi | **Model + Safety.** *Model:* chatbot vốn chạy theo kịch bản đã được chuyên gia duyệt, nhưng Cass bổ sung AI tạo sinh nên bot tự sinh câu trả lời ngoài kịch bản (NPR). *Safety:* không có guardrail chặn chủ đề giảm cân, calo, BMI; không có quy trình kiểm thử lại sau khi đổi mô hình; NEDA đã nhận phản ánh từ 10/2022 nhưng không xử lý dứt điểm. Chưa đủ bằng chứng công khai về chi tiết kỹ thuật của bản cập nhật. |
+| Harm xảy ra là gì? | 📌 **[Đã xảy ra]** Người thử nhận lời khuyên giảm 1–2 pound/tuần với mức thâm hụt 500–1.000 calo/ngày; NEDA phải vô hiệu hóa bot và bị chỉ trích rộng rãi. 💭 **[Nguy cơ, chưa ghi nhận]** Người bệnh làm theo có thể tái phát hoặc bệnh nặng hơn; người đang khủng hoảng mất kênh hỗ trợ là con người. |
 | Harm lens | **Injury** (sức khỏe thể chất và tinh thần); phụ: **Trust loss** (niềm tin vào tổ chức hỗ trợ). |
 | Severity | **Critical.** Rối loạn ăn uống có thể đe dọa tính mạng, và lời khuyên đi ngược hẳn mục tiêu điều trị. |
 | Scale | **Medium.** Đường dây nóng phục vụ khoảng 70.000 người/năm, và Tessa được dự định thay thế kênh này. Một thay đổi của nhà cung cấp ảnh hưởng **cùng lúc** tới mọi người dùng, nhưng số người đã thực sự dùng Tessa chưa được công bố. |
@@ -103,57 +111,68 @@
 
 ---
 
-### 4. Case study 3 — Epic Sepsis Model bỏ sót 2/3 ca nhiễm khuẩn huyết
+### 4. Case study 3 — Symptom checker của Babylon Health được quảng bá "ngang bác sĩ" nhưng thiếu bằng chứng
 
 #### Brief Case
 
-- **Tổ chức / sản phẩm AI:** Epic Systems, với Epic Sepsis Model (ESM) là mô hình dự đoán độc quyền tích hợp sẵn trong hệ thống bệnh án điện tử Epic, được **hàng trăm bệnh viện** tại Mỹ sử dụng.
-- **Thời gian, địa điểm / bối cảnh:** Michigan Medicine (University of Michigan), Mỹ. Dữ liệu từ 12/2018 đến 10/2019; nghiên cứu công bố ngày 21/06/2021.
-- **AI được dùng để làm gì:** tự động cảnh báo sớm cho bác sĩ khi bệnh nhân nội trú có nguy cơ nhiễm khuẩn huyết (sepsis), để điều trị kháng sinh kịp thời.
-- **Vấn đề hoặc sự kiện đáng chú ý:** khi được kiểm chứng độc lập (external validation), mô hình cho kết quả **kém hơn nhiều so với công bố của nhà cung cấp**. Nó vừa bỏ sót phần lớn ca sepsis, vừa phát rất nhiều cảnh báo sai, gây nguy cơ **alert fatigue**.
-- **Số liệu có nguồn** (JAMA Internal Medicine, 2021):
-  - Mẫu nghiên cứu: **27.697 bệnh nhân**, **38.455 lượt nhập viện**.
-  - **AUC 0,63**, trong khi nhà cung cấp công bố 0,76–0,83.
-  - Độ nhạy **33%**, PPV **12%**.
-  - **Bỏ sót 67%** bệnh nhân sepsis nhưng **phát cảnh báo cho 18%** tổng số bệnh nhân nằm viện.
-  - Chỉ phát hiện thêm **7%** số ca sepsis mà bác sĩ chưa kịp điều trị kịp thời.
+- **Tổ chức / sản phẩm AI:** Babylon Health (Anh). Sản phẩm là symptom checker — AI chẩn đoán và phân loại mức khẩn cấp (*Babylon Diagnostic and Triage System*), tích hợp trong ứng dụng, trong đó có dịch vụ GP at Hand của NHS.
+- **Thời gian, địa điểm / bối cảnh:** Vương quốc Anh và một số quốc gia khác, 2018–2019.
+  - **06/2018:** Babylon công bố kết quả đánh giá tại Royal College of Physicians, London, khẳng định AI chẩn đoán "ngang bác sĩ".
+  - **11/2018:** các nhà nghiên cứu độc lập phản biện kết quả này trên The Lancet.
+- **AI được dùng để làm gì:** người dùng nhập triệu chứng; AI gợi ý bệnh có thể mắc và khuyên mức xử lý, như tự chăm sóc, gặp bác sĩ đa khoa hay đi cấp cứu.
+- **Vấn đề hoặc sự kiện đáng chú ý:**
+  - **Tuyên bố hiệu năng thiếu bằng chứng:** Babylon tuyên bố AI đạt điểm cao hơn mức đỗ trung bình của bác sĩ trong bài thi MRCGP và chính xác ngang bác sĩ. Fraser, Coiera và Wong viết trên The Lancet rằng nghiên cứu này "không đưa ra bằng chứng thuyết phục" rằng hệ thống tốt hơn bác sĩ trong tình huống thực tế, và "có khả năng nó kém hơn đáng kể". Lý do: dữ liệu được **bác sĩ nhập** chứ không phải người bệnh thật.
+  - **Thiên lệch giới tính:** Undark (2019) ghi lại trường hợp hai hồ sơ giống hệt nhau, cùng triệu chứng đau ngực. Với hồ sơ **nữ**, app gợi ý trầm cảm hoặc cơn hoảng loạn; với hồ sơ **nam**, app gợi ý vấn đề tim mạch.
+  - **Quảng cáo gây hiểu lầm:** Babylon từng bị cơ quan quản lý quảng cáo của Anh khiển trách. Royal College of General Practitioners và British Medical Association cũng lên tiếng nghi ngờ các tuyên bố của công ty.
+- **Số liệu có nguồn:**
+  - **Theo công bố của Babylon (06/2018):**
+    - Trên **100 tình huống bệnh mô phỏng** (vignette), AI đạt độ chính xác **80%**, trong khi **7 bác sĩ** đối chứng đạt **64–94%**.
+    - Với câu hỏi mẫu của kỳ thi MRCGP, AI đạt **81%**, so với mức đỗ trung bình **72%** của bác sĩ trong 5 năm trước đó.
+  - **Theo Undark (12/2019):** symptom checker đã được dùng khoảng **1,7 triệu lượt** ở nhiều quốc gia, và nền tảng đã có khoảng **700.000 lượt tư vấn số** giữa bệnh nhân và bác sĩ.
+  - Theo Undark (12/2019), khi đó **chưa có nghiên cứu ngẫu nhiên có đối chứng, đã bình duyệt** nào kiểm chứng hiệu năng của hệ thống trên bệnh nhân thật.
 - **Nguồn:**
-  - *External Validation of a Widely Implemented Proprietary Sepsis Prediction Model in Hospitalized Patients* — Wong A. et al. — JAMA Internal Medicine — 21/06/2021 — https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2781313 (mục Results)
-  - *Popular sepsis prediction tool less accurate than claimed* — Michigan Medicine — 06/2021 — https://michiganmedicine.org/health-lab/popular-sepsis-prediction-tool-less-accurate-claimed
-  - *Popular sepsis prediction model works substantially worse than claimed* — MedCity News — 06/2021 — https://medcitynews.com/2021/06/popular-sepsis-prediction-model-works-substantially-worse-than-claimed-researchers-find
+  - *Safety of patient-facing digital symptom checkers* — Fraser H., Coiera E., Wong D. — The Lancet 392(10161):2263–2264 — 24/11/2018 — https://eprints.whiterose.ac.uk/id/eprint/138305/
+  - *Babylon AI achieves equivalent accuracy with human doctors* — thông cáo của Babylon, đăng lại trên BioSpectrum — 06/2018 — https://biospectrumindia.com/news/57/11202/babylon-ai-achieves-equivalent-accuracy-with-human-doctors-.html
+  - *Review says Babylon's AI claims lack 'convincing evidence'* — Digital Health — 11/2018 — https://www.digitalhealth.net/2018/11/lancet-review-babylons-ai/
+  - *Medical Advice From a Bot: The Unproven Promise of Babylon Health* — Undark — 09/12/2019 — https://undark.org/2019/12/09/babylon-health-artificial-intelligence-medical-advice/ (mục về thiên lệch giới tính, khiển trách quảng cáo, số lượt sử dụng)
 - **Phân biệt bằng chứng và nhận định:**
-  - 📌 **Nguồn xác nhận:** các chỉ số AUC, độ nhạy, PPV, tỷ lệ bỏ sót và tỷ lệ cảnh báo **tại một hệ thống bệnh viện** (Michigan Medicine).
-  - 💭 **Tôi suy luận / chưa rõ:** nghiên cứu **không đo hậu quả lâm sàng** như tử vong hay điều trị chậm do mô hình. Kết quả có thể khác ở bệnh viện khác. Epic đã phản biện về cách chọn ngưỡng cảnh báo trong nghiên cứu.
+  - 📌 **Nguồn xác nhận:**
+    - Các con số 80%, 81% là **do Babylon tự công bố**.
+    - Phản biện về phương pháp đã được đăng trên The Lancet.
+    - Ví dụ về thiên lệch giới tính và việc bị khiển trách vì quảng cáo được Undark ghi lại.
+  - 💭 **Chưa rõ / tôi suy luận:**
+    - **Chưa có nguồn ghi nhận người dùng cụ thể nào bị tổn hại** vì triage sai của Babylon. Tác hại tôi phân tích dưới đây là **nguy cơ**.
+    - Ví dụ thiên lệch giới tính là một phép thử đơn lẻ, chưa phải nghiên cứu có hệ thống về tỷ lệ sai lệch.
 
 #### Harm Map Worksheet
 
 | Trường | Phân tích của tôi |
 | --- | --- |
-| High-risk moment | Bệnh nhân nội trú đang tiến triển sepsis nhưng mô hình **không** phát cảnh báo; đồng thời bác sĩ phải nhận rất nhiều cảnh báo sai nên dần bỏ qua cả cảnh báo đúng. |
-| Stakeholder bị ảnh hưởng | Bệnh nhân nội trú và gia đình; bác sĩ, điều dưỡng (quá tải cảnh báo); bệnh viện (trách nhiệm, chi phí); nhà cung cấp Epic (uy tín). |
-| Failure mode | **Missed detection** (false negative) do **dataset shift** hoặc khả năng tổng quát hóa kém; kèm **false positive gây alert fatigue**; gốc rễ là **triển khai khi chưa kiểm chứng** và hiệu năng được công bố cao hơn thực tế. |
-| Layer bắt đầu lỗi | **Model + Grounding**, phụ là **UX.** *Model:* mô hình độc quyền, ít minh bạch, hiệu năng thực tế thấp hơn công bố. *Grounding:* dữ liệu và cách ghi chép ở từng bệnh viện khác với dữ liệu lúc huấn luyện. *UX:* cảnh báo cho 18% bệnh nhân làm loãng sự chú ý của ê-kíp. |
-| Harm xảy ra là gì? | 📌 **[Đã xảy ra, ở mức đo lường]** Tại Michigan Medicine, mô hình bỏ sót 67% ca sepsis, khoảng 88% cảnh báo là sai (PPV 12%), và cảnh báo phát cho 18% bệnh nhân. 💭 **[Nguy cơ, nghiên cứu không đo]** Điều trị kháng sinh có thể bị chậm, làm tăng nguy cơ tử vong; dùng kháng sinh không cần thiết; nhân viên y tế mất niềm tin vào hệ thống cảnh báo. |
-| Harm lens | **Injury**; phụ: **Misinformation** (thông tin hiệu năng sai lệch khi ra quyết định triển khai). |
-| Severity | **Critical.** Sepsis đe dọa tính mạng và rất phụ thuộc vào thời gian điều trị. |
-| Scale | **High.** Mô hình chạy liên tục trên **mọi bệnh nhân nội trú** và được tích hợp ở **hàng trăm bệnh viện**; nghiên cứu riêng một hệ thống đã có 38.455 lượt nhập viện. |
-| Probability | **High.** Độ nhạy chỉ 33% nghĩa là bỏ sót là kết quả thường gặp, không phải ngoại lệ. |
-| Frequency | **High.** Mô hình đánh giá bệnh nhân liên tục mỗi ngày, nên lỗi bỏ sót và cảnh báo sai lặp lại hằng ngày. |
-| Vì sao? | Các đánh giá dựa trên số liệu đo trực tiếp trong nghiên cứu JAMA đã qua bình duyệt, với cỡ mẫu lớn. **Giới hạn bằng chứng:** chỉ một hệ thống bệnh viện; không có số liệu về hậu quả lâm sàng; nhà cung cấp phản biện cách đặt ngưỡng cảnh báo. |
+| High-risk moment | Một phụ nữ đau ngực nhập triệu chứng vào symptom checker, và app gợi ý trầm cảm hoặc cơn hoảng loạn thay vì cảnh báo nguy cơ tim mạch, nên người dùng không đi cấp cứu. Bối cảnh rộng hơn: người dùng và NHS tin vào tuyên bố "ngang bác sĩ" của nhà cung cấp. |
+| Stakeholder bị ảnh hưởng | Người dùng app, đặc biệt là phụ nữ có triệu chứng tim mạch; người thân; NHS và bác sĩ đa khoa tiếp nhận ca chuyển tuyến; Babylon (uy tín, pháp lý). |
+| Failure mode | **Bias / fairness** (triage khác nhau theo giới tính với cùng triệu chứng) kèm **Unsafe triage** (đánh giá thấp mức khẩn cấp); gốc rễ là **tuyên bố hiệu năng vượt quá bằng chứng** (overclaiming), chưa được kiểm chứng độc lập với người dùng thật. |
+| Layer bắt đầu lỗi | **Model + Safety**, phụ là **UX.** *Model:* mô hình chẩn đoán có thể học thiên lệch từ dữ liệu, chẳng hạn bệnh tim ở nữ giới vốn hay bị chẩn đoán sót. *Safety:* thiếu đánh giá độc lập và nghiên cứu trên người dùng thật trước khi triển khai rộng (Lancet). *UX:* app trình bày kết quả như lời khuyên của bác sĩ, khiến người dùng tin và không đi khám. Chưa đủ bằng chứng công khai để xác định nguồn gốc kỹ thuật của thiên lệch. |
+| Harm xảy ra là gì? | 📌 **[Đã xảy ra]** Có kết quả thiên lệch theo giới tính trong phép thử được Undark ghi lại; tuyên bố hiệu năng bị The Lancet phản biện; Babylon bị khiển trách vì quảng cáo gây hiểu lầm. 💭 **[Nguy cơ, chưa ghi nhận]** Phụ nữ bị nhồi máu cơ tim có thể đi cấp cứu muộn; người dùng và hệ thống y tế ra quyết định dựa trên hiệu năng bị thổi phồng. |
+| Harm lens | **Injury**; phụ: **Dignity loss / fairness** (đối xử khác nhau theo giới tính) và **Misinformation** (thông tin hiệu năng sai lệch). |
+| Severity | **Critical.** Bỏ lỡ nhồi máu cơ tim có thể gây tử vong, và cấp cứu tim mạch rất phụ thuộc vào thời gian. |
+| Scale | **High.** Khoảng 1,7 triệu lượt dùng symptom checker ở nhiều quốc gia (Undark), có tích hợp trong dịch vụ của NHS. Một thiên lệch trong mô hình lặp lại với **mọi** người dùng cùng nhóm. |
+| Probability | **Medium.** Sai lệch đã xuất hiện trong phép thử nhưng chưa có số liệu về tỷ lệ trên người dùng thật. Lancet cho rằng hệ thống *có thể* kém hơn bác sĩ đáng kể khi người dùng thật tự nhập. |
+| Frequency | **Medium.** Đau ngực là triệu chứng phổ biến khi tra cứu, nhưng tình huống nguy hiểm thật (nhồi máu cơ tim) chỉ chiếm một phần. Đây là nhận định của tôi, chưa có số liệu. |
+| Vì sao? | Symptom checker đứng **trước** bác sĩ: một lời khuyên "không khẩn cấp" sai có thể khiến người dùng không bao giờ gặp bác sĩ. Thiên lệch ở cấp mô hình lặp lại theo quy mô người dùng. **Giới hạn bằng chứng:** số liệu hiệu năng là Babylon tự công bố; ví dụ thiên lệch là phép thử đơn lẻ; không có số liệu tổn hại thực tế. |
 
 ---
 
 ### 5. Tổng hợp và bài học cho dự án P-110
 
-| | Case 1 — Tessa | Case 2 — ChatGPT/bromua | Case 3 — Epic Sepsis |
+| | Case 1 — Tessa | Case 2 — ChatGPT/bromua | Case 3 — Babylon symptom checker |
 | --- | --- | --- | --- |
-| Layer chính | Safety | Grounding | Model |
-| Tác hại đã ghi nhận | Lời khuyên có hại; chatbot bị gỡ | Ngộ độc, nằm viện 3 tuần | Bỏ sót 67% ca sepsis |
-| Bài học | Kiểm soát mọi thay đổi của nhà cung cấp và mô hình | Hỏi rõ ngữ cảnh và cảnh báo cụ thể | Kiểm chứng tại chỗ trước khi tin số liệu nhà cung cấp |
+| Layer chính | Model + Safety | Grounding + Safety | Model + Safety |
+| Tác hại đã ghi nhận | Lời khuyên giảm cân cho người rối loạn ăn uống; bot bị vô hiệu hóa | Ngộ độc bromua, nằm viện 3 tuần | Triage thiên lệch giới tính trong phép thử; tuyên bố hiệu năng bị phản biện (chưa ghi nhận tổn hại thực tế) |
+| Bài học | Kiểm soát mọi thay đổi model của nhà cung cấp; xử lý ngay phản ánh của người dùng | Hỏi rõ ngữ cảnh và cảnh báo cụ thể | Kiểm chứng độc lập với người dùng thật; kiểm thử thiên lệch; không quảng bá vượt bằng chứng |
 
 💭 **[Nhận định] Áp dụng cho P-110 — AI Nutrition Agent:**
 1. **Human-in-the-loop bắt buộc** (từ Case 1 và 2): mọi thực đơn do agent sinh ra dừng ở trạng thái `PENDING_REVIEW` cho tới khi chuyên gia dinh dưỡng duyệt. Cần giữ nguyên tắc **không có đường đi nào bỏ qua bước duyệt**.
 2. **Grounding và trích dẫn** (từ Case 2): cảnh báo dựa trên guideline (RAG) và có trích nguồn. Nên bổ sung danh sách **chất hoặc thực phẩm không an toàn** để chặn cứng các gợi ý thay thế nguy hiểm, không phụ thuộc vào LLM. Hồ sơ bệnh nền phải được đưa vào khi kiểm tra, để tránh trường hợp gợi ý muối kali cho người suy thận.
 3. **Kiểm soát thay đổi model và prompt** (từ Case 1): mỗi lần đổi phiên bản LLM, prompt hoặc chỉ mục guideline, phải **chạy lại bộ eval an toàn** trước khi phát hành.
-4. **Kiểm chứng trên dữ liệu thật trước khi mở rộng** (từ Case 3): eval trên hồ sơ demo **chưa đủ** để kết luận hệ thống an toàn với bệnh nhân thật. Cần thử nghiệm có giám sát và theo dõi tỷ lệ cảnh báo sai hoặc bị bỏ qua để tránh alert fatigue cho người chăm sóc.
+4. **Kiểm chứng độc lập và kiểm thử thiên lệch** (từ Case 3): eval trên hồ sơ demo **chưa đủ** để kết luận hệ thống an toàn với bệnh nhân thật. Cần thử nghiệm có giám sát, so sánh kết quả giữa các nhóm (giới tính, tuổi, bệnh nền), và **không quảng bá** P-110 là "ngang chuyên gia" khi chưa có bằng chứng.
 5. **Dữ liệu nhạy cảm:** hồ sơ bệnh nền và thuốc đang dùng là dữ liệu sức khỏe nhạy cảm, nên cần xin đồng ý rõ ràng, giới hạn quyền truy cập và lưu nhật ký truy cập.
