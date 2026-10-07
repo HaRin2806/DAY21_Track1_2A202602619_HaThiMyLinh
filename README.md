@@ -54,17 +54,17 @@
 
 | Trường | Phân tích của tôi |
 | --- | --- |
-| High-risk moment | Người đang mắc hoặc có nguy cơ rối loạn ăn uống hỏi Tessa cách cải thiện sức khỏe hoặc chia sẻ cảm xúc tiêu cực về cơ thể, và bot khuyên giảm cân, đếm calo thay vì hỗ trợ hoặc chuyển cho người tư vấn. |
-| Stakeholder bị ảnh hưởng | Người dùng có rối loạn ăn uống; người thân của họ; NEDA (tổ chức triển khai); nhân viên đường dây nóng bị thay thế; nhà cung cấp Cass. |
-| Failure mode | **Harmful advice** (lời khuyên có hại cho đúng nhóm người dùng mục tiêu) kèm **Escalation failure** (không chuyển sang người thật khi người dùng có dấu hiệu khủng hoảng). |
-| Layer bắt đầu lỗi | **Model + Safety.** *Model:* chatbot vốn chạy theo kịch bản đã được chuyên gia duyệt, nhưng Cass bổ sung AI tạo sinh nên bot tự sinh câu trả lời ngoài kịch bản (NPR). *Safety:* không có guardrail chặn chủ đề giảm cân, calo, BMI; không có quy trình kiểm thử lại sau khi đổi mô hình; NEDA đã nhận phản ánh từ 10/2022 nhưng không xử lý dứt điểm. Chưa đủ bằng chứng công khai về chi tiết kỹ thuật của bản cập nhật. |
-| Harm xảy ra là gì? | 📌 **[Đã xảy ra]** Người thử nhận lời khuyên giảm 1–2 pound/tuần với mức thâm hụt 500–1.000 calo/ngày; NEDA phải vô hiệu hóa bot và bị chỉ trích rộng rãi. 💭 **[Nguy cơ, chưa ghi nhận]** Người bệnh làm theo có thể tái phát hoặc bệnh nặng hơn; người đang khủng hoảng mất kênh hỗ trợ là con người. |
-| Harm lens | **Injury** (sức khỏe thể chất và tinh thần); phụ: **Trust loss** (niềm tin vào tổ chức hỗ trợ). |
-| Severity | **Critical.** Rối loạn ăn uống có thể đe dọa tính mạng, và lời khuyên đi ngược hẳn mục tiêu điều trị. |
-| Scale | **Medium.** Đường dây nóng phục vụ khoảng 70.000 người/năm, và Tessa được dự định thay thế kênh này. Một thay đổi của nhà cung cấp ảnh hưởng **cùng lúc** tới mọi người dùng, nhưng số người đã thực sự dùng Tessa chưa được công bố. |
-| Probability | **High.** Lỗi bị phát hiện chỉ sau vài lượt thử của một người dùng, tức là xảy ra dễ dàng chứ không phải trường hợp hiếm. |
-| Frequency | **Medium.** Không phải phiên chat nào cũng hỏi về cân nặng, nhưng với nhóm người dùng rối loạn ăn uống thì chủ đề cân nặng và ăn uống xuất hiện thường xuyên. |
-| Vì sao? | Nhóm người dùng dễ tổn thương, lời khuyên sai lại đúng vào hành vi bệnh lý, và bot được định làm **kênh thay thế** cho người thật nên không còn lớp con người phía sau. **Giới hạn bằng chứng:** đánh giá Scale và Frequency là suy luận của tôi, vì NEDA chưa công bố số phiên chat hoặc số người bị ảnh hưởng. |
+| High-risk moment | Người đang mắc hoặc có nguy cơ rối loạn ăn uống hỏi Tessa về cân nặng hay cách cải thiện sức khỏe — thời điểm chatbot thay thế đường dây nóng do người trực và câu trả lời có thể định hướng hành vi ăn uống của họ. |
+| Stakeholder bị ảnh hưởng | **Người dùng có rối loạn ăn uống** (trực tiếp); **người thân** của họ; **NEDA** (tổ chức triển khai); **nhân viên và tình nguyện viên đường dây nóng** (bị thay thế); **Cass** (nhà cung cấp). |
+| Failure mode | **Harmful advice** — bot khuyên giảm cân và thâm hụt calo, là hành vi có hại cho đúng nhóm người dùng mục tiêu. Phụ: **Escalation failure** — bot tiếp tục tự xử lý chủ đề cân nặng thay vì chuyển cho chuyên gia. *Giả thuyết:* lỗi chuyển tiếp này là suy luận của tôi từ việc đường dây nóng do người trực sắp bị đóng; nguồn không mô tả cơ chế chuyển tiếp của Tessa. |
+| Layer bắt đầu lỗi | **Model + Safety.** *Model (có nguồn):* NPR cho biết Cass đã bổ sung AI tạo sinh, nên Tessa tự sinh câu trả lời ngoài kịch bản do chuyên gia soạn. Mô hình mới không phù hợp với tác vụ cần nội dung được kiểm soát chặt. *Safety (có nguồn một phần):* NEDA nhận phản ánh từ 10/2022 nhưng bot vẫn hoạt động tới 05/2023. Việc không có guardrail chặn chủ đề giảm cân là giả thuyết của tôi; **chưa đủ bằng chứng** về cấu hình guardrail thực tế. |
+| Harm xảy ra là gì? | 📌 **[Đã xảy ra]** **Người thử (Sharon Maxwell)** bị khuyên giảm 1–2 pound/tuần, thâm hụt 500–1.000 calo/ngày **khi** hỏi Tessa. **NEDA** bị chỉ trích và phải vô hiệu hóa bot **khi** các câu trả lời được công khai. 💭 **[Nguy cơ, chưa ghi nhận]** **Người bệnh rối loạn ăn uống** có thể tái phát hoặc bệnh nặng hơn **khi** làm theo lời khuyên. **Người đang khủng hoảng** có thể không được hỗ trợ kịp **khi** kênh do người trực bị thay bằng bot. |
+| Harm lens | **Injury** (tổn hại sức khỏe thể chất do hành vi ăn kiêng ở người rối loạn ăn uống); phụ: **Misinformation** (lời khuyên sức khỏe sai với đối tượng). |
+| Severity | **Critical** |
+| Scale | **Medium** — đánh giá của tôi. Căn cứ: đường dây nóng phục vụ gần 70.000 người/năm (NPR) và Tessa được định thay thế kênh này. **Giới hạn:** số người thực sự đã dùng Tessa và nhận câu trả lời có hại **chưa được công bố**. |
+| Probability | **High** — đánh giá của tôi. Căn cứ: một người thử nhận được lời khuyên có hại ngay khi hỏi về cân nặng; NEDA đã nhận phản ánh tương tự từ 10/2022, tức không phải một lần duy nhất. Không có tỷ lệ đo được. |
+| Frequency | **Chưa đủ dữ liệu để đánh giá bằng số.** Nhận định: **Medium** — chủ đề cân nặng thường gặp với người rối loạn ăn uống, nhưng không phải phiên chat nào cũng hỏi. |
+| Vì sao? | **Severity Critical:** rối loạn ăn uống có thể đe dọa tính mạng, và lời khuyên đi ngược hẳn mục tiêu điều trị. **Scale Medium:** quy mô tiềm năng lớn (70.000 người/năm) nhưng bot bị tắt chỉ vài ngày sau khi định thay thế đường dây nóng, nên tôi không chọn High. **Probability High:** lỗi tái hiện dễ và đã được phản ánh từ nhiều nguồn. **Frequency:** không có số phiên chat nên chỉ nhận định. **Nguồn:** NPR 31/05/2023 và 08/06/2023; CNN 01/06/2023. |
 
 ---
 
@@ -97,17 +97,17 @@
 
 | Trường | Phân tích của tôi |
 | --- | --- |
-| High-risk moment | Người dùng hỏi chatbot đa dụng nên dùng chất gì thay clorua (muối ăn) trong chế độ ăn, và bot nêu bromua mà không hỏi lại mục đích, không cảnh báo độc tính, không khuyên gặp bác sĩ. |
-| Stakeholder bị ảnh hưởng | Người dùng trực tiếp; gia đình; bệnh viện và đội điều trị (chi phí, nguồn lực); nhà phát triển chatbot (uy tín, pháp lý); về sau là người bệnh có bệnh nền tự tìm lời khuyên dinh dưỡng trên chatbot. |
-| Failure mode | **Harmful advice:** câu trả lời **đúng về mặt hóa học nhưng sai ngữ cảnh** ăn uống. Kèm **Escalation failure:** không hỏi lại, không chuyển người dùng tới chuyên gia y tế. |
-| Layer bắt đầu lỗi | **Grounding + Safety**, phụ là **UX.** *Grounding:* không xác định được ngữ cảnh "chế độ ăn của con người" và không đối chiếu với tri thức về an toàn thực phẩm. *Safety:* thiếu guardrail cho chủ đề "chất thay thế để ăn uống". *UX:* giao diện trò chuyện tạo cảm giác như đang được chuyên gia tư vấn, còn lời nhắc "ngữ cảnh rất quan trọng" quá chung chung nên dễ bị bỏ qua. Vì không có nguyên văn hội thoại, chưa đủ bằng chứng để loại trừ việc người dùng hiểu sai. |
-| Harm xảy ra là gì? | 📌 **[Đã xảy ra]** Người đàn ông 60 tuổi bị ngộ độc bromua (1.700 mg/L), có biểu hiện loạn thần và nằm viện 3 tuần. 💭 **[Nguy cơ, chưa ghi nhận]** Người có bệnh nền như suy thận hỏi về "muối thay thế" có thể được gợi ý muối kali, gây nguy cơ tăng kali máu, vì chatbot đa dụng không biết hồ sơ bệnh của họ. |
-| Harm lens | **Injury**; phụ: **Misinformation** (thông tin sức khỏe sai ngữ cảnh). |
-| Severity | **Critical.** Ngộ độc bromua gây loạn thần và phải nằm viện dài ngày, có thể nguy hiểm tính mạng. |
-| Scale | **Low** với sự kiện đã ghi nhận (1 ca); **Medium–High** với nguy cơ, vì chatbot đa dụng có lượng người dùng rất lớn và câu hỏi về sức khỏe, dinh dưỡng rất phổ biến (nhận định của tôi). |
-| Probability | **Low–Medium.** Để gây hại cần chuỗi nhiều bước: hỏi đúng kiểu câu, hiểu sai, tự mua hóa chất và dùng lâu dài. Tuy nhiên câu trả lời có vấn đề **lặp lại được** khi các bác sĩ thử lại. |
-| Frequency | **Low** với hậu quả nặng như ca này; câu trả lời thiếu ngữ cảnh về sức khỏe thì có thể gặp **thường xuyên hơn** (nhận định, chưa có số liệu). |
-| Vì sao? | Hậu quả rất nặng nhưng cần nhiều bước mới xảy ra, nên Severity cao trong khi Probability và Frequency thấp hơn. Căn cứ chính là báo cáo ca bệnh đã qua bình duyệt. **Giới hạn bằng chứng:** chỉ có 1 ca, không có nguyên văn hội thoại, và mô hình ChatGPT đã được cập nhật nhiều lần từ đó. |
+| High-risk moment | Người dùng hỏi chatbot đa dụng nên dùng chất gì thay clorua (muối ăn) **trong chế độ ăn** — thời điểm câu trả lời của AI trở thành căn cứ để người dùng tự đưa một hóa chất vào cơ thể, không có nhân viên y tế ở giữa. |
+| Stakeholder bị ảnh hưởng | **Người dùng** (trực tiếp); **gia đình**; **bệnh viện và đội điều trị** (chi phí, nguồn lực); **OpenAI** (uy tín, pháp lý); **người bệnh có bệnh nền** tự tìm lời khuyên dinh dưỡng trên chatbot (nguy cơ). |
+| Failure mode | **Harmful advice** — nêu bromua làm chất thay clorua mà không cảnh báo độc tính khi dùng để ăn. Phụ: **Escalation failure** — không hỏi lại mục đích, không khuyên gặp bác sĩ (các bác sĩ báo cáo ca bệnh đã xác nhận khi hỏi lại). Phụ: **Over-reliance** — người dùng tin câu trả lời và tự dùng hóa chất suốt 3 tháng. |
+| Layer bắt đầu lỗi | **Grounding + Safety**, phụ là **UX** — **giả thuyết của tôi**, vì OpenAI không công bố chi tiết hệ thống và các bác sĩ không có nguyên văn hội thoại. *Grounding:* câu trả lời không được giới hạn trong ngữ cảnh "thực phẩm cho người". *Safety:* có nguồn xác nhận rằng khi hỏi lại, bot **không cảnh báo cụ thể và không hỏi lý do**, tức lớp bảo vệ không kích hoạt với chủ đề nguy hiểm. *UX:* giao diện trò chuyện tạo cảm giác như được tư vấn, còn lời nhắc "ngữ cảnh rất quan trọng" quá chung chung. |
+| Harm xảy ra là gì? | 📌 **[Đã xảy ra]** **Người đàn ông 60 tuổi** bị ngộ độc bromua (1.700 mg/L), loạn thần và phải nằm viện 3 tuần **khi** dùng natri bromua thay muối ăn suốt 3 tháng sau khi tham khảo ChatGPT. 💭 **[Nguy cơ, chưa ghi nhận]** **Người suy thận** có thể bị tăng kali máu **khi** chatbot không biết bệnh nền của họ mà gợi ý muối kali làm "muối thay thế". |
+| Harm lens | **Injury** (ngộ độc, phải nằm viện); phụ: **Misinformation** (thông tin đúng về hóa học nhưng sai ngữ cảnh ăn uống). |
+| Severity | **Critical** |
+| Scale | **Low** với hậu quả đã ghi nhận: **1 ca** trong báo cáo ca bệnh. Với nguy cơ: **chưa đủ dữ liệu** để định lượng. Nhận định của tôi: phạm vi tiềm năng lớn vì chatbot đa dụng có rất nhiều người dùng hỏi về sức khỏe. |
+| Probability | **Low** — đánh giá của tôi. Căn cứ: để gây hại cần chuỗi nhiều bước (hỏi đúng kiểu câu, hiểu sai, tự mua hóa chất, dùng lâu dài). Tuy nhiên câu trả lời có vấn đề **lặp lại được** khi các bác sĩ hỏi lại. |
+| Frequency | **Chưa đủ dữ liệu để đánh giá.** Đây là ca duy nhất có trong nguồn; nhận định: **Low** với hậu quả nặng như ca này. |
+| Vì sao? | **Severity Critical:** ngộ độc gây loạn thần và phải nằm viện 3 tuần — tổn hại thể chất nghiêm trọng đã xảy ra. **Scale Low:** chỉ có 1 ca được ghi nhận; không suy ra số người bị ảnh hưởng. **Probability và Frequency Low:** cần nhiều bước mới gây hại, cho thấy Severity cao **không** kéo theo xác suất cao. **Giới hạn:** không có nguyên văn hội thoại; mô hình đã được cập nhật nhiều lần từ đó. **Nguồn:** Annals of Internal Medicine: Clinical Cases, 2025. |
 
 ---
 
@@ -148,17 +148,17 @@
 
 | Trường | Phân tích của tôi |
 | --- | --- |
-| High-risk moment | Một phụ nữ đau ngực nhập triệu chứng vào symptom checker, và app gợi ý trầm cảm hoặc cơn hoảng loạn thay vì cảnh báo nguy cơ tim mạch, nên người dùng không đi cấp cứu. Bối cảnh rộng hơn: người dùng và NHS tin vào tuyên bố "ngang bác sĩ" của nhà cung cấp. |
-| Stakeholder bị ảnh hưởng | Người dùng app, đặc biệt là phụ nữ có triệu chứng tim mạch; người thân; NHS và bác sĩ đa khoa tiếp nhận ca chuyển tuyến; Babylon (uy tín, pháp lý). |
-| Failure mode | **Bias / fairness** (triage khác nhau theo giới tính với cùng triệu chứng) kèm **Unsafe triage** (đánh giá thấp mức khẩn cấp); gốc rễ là **tuyên bố hiệu năng vượt quá bằng chứng** (overclaiming), chưa được kiểm chứng độc lập với người dùng thật. |
-| Layer bắt đầu lỗi | **Model + Safety**, phụ là **UX.** *Model:* mô hình chẩn đoán có thể học thiên lệch từ dữ liệu, chẳng hạn bệnh tim ở nữ giới vốn hay bị chẩn đoán sót. *Safety:* thiếu đánh giá độc lập và nghiên cứu trên người dùng thật trước khi triển khai rộng (Lancet). *UX:* app trình bày kết quả như lời khuyên của bác sĩ, khiến người dùng tin và không đi khám. Chưa đủ bằng chứng công khai để xác định nguồn gốc kỹ thuật của thiên lệch. |
-| Harm xảy ra là gì? | 📌 **[Đã xảy ra]** Có kết quả thiên lệch theo giới tính trong phép thử được Undark ghi lại; tuyên bố hiệu năng bị The Lancet phản biện; Babylon bị khiển trách vì quảng cáo gây hiểu lầm. 💭 **[Nguy cơ, chưa ghi nhận]** Phụ nữ bị nhồi máu cơ tim có thể đi cấp cứu muộn; người dùng và hệ thống y tế ra quyết định dựa trên hiệu năng bị thổi phồng. |
-| Harm lens | **Injury**; phụ: **Dignity loss / fairness** (đối xử khác nhau theo giới tính) và **Misinformation** (thông tin hiệu năng sai lệch). |
-| Severity | **Critical.** Bỏ lỡ nhồi máu cơ tim có thể gây tử vong, và cấp cứu tim mạch rất phụ thuộc vào thời gian. |
-| Scale | **High.** Khoảng 1,7 triệu lượt dùng symptom checker ở nhiều quốc gia (Undark), có tích hợp trong dịch vụ của NHS. Một thiên lệch trong mô hình lặp lại với **mọi** người dùng cùng nhóm. |
-| Probability | **Medium.** Sai lệch đã xuất hiện trong phép thử nhưng chưa có số liệu về tỷ lệ trên người dùng thật. Lancet cho rằng hệ thống *có thể* kém hơn bác sĩ đáng kể khi người dùng thật tự nhập. |
-| Frequency | **Medium.** Đau ngực là triệu chứng phổ biến khi tra cứu, nhưng tình huống nguy hiểm thật (nhồi máu cơ tim) chỉ chiếm một phần. Đây là nhận định của tôi, chưa có số liệu. |
-| Vì sao? | Symptom checker đứng **trước** bác sĩ: một lời khuyên "không khẩn cấp" sai có thể khiến người dùng không bao giờ gặp bác sĩ. Thiên lệch ở cấp mô hình lặp lại theo quy mô người dùng. **Giới hạn bằng chứng:** số liệu hiệu năng là Babylon tự công bố; ví dụ thiên lệch là phép thử đơn lẻ; không có số liệu tổn hại thực tế. |
+| High-risk moment | Một phụ nữ đau ngực nhập triệu chứng vào symptom checker — thời điểm AI đưa ra gợi ý chẩn đoán và mức khẩn cấp, quyết định người dùng có đi cấp cứu hay không. |
+| Stakeholder bị ảnh hưởng | **Người dùng nữ** có triệu chứng tim mạch (trực tiếp); **người thân**; **NHS và bác sĩ đa khoa** tiếp nhận ca chuyển tuyến; **Babylon** (uy tín, pháp lý). |
+| Failure mode | **Bias / fairness** — cùng triệu chứng đau ngực nhưng hồ sơ nữ được gợi ý trầm cảm hoặc hoảng loạn, hồ sơ nam được gợi ý bệnh tim (Undark). Phụ: **Over-reliance** — app được quảng bá là chính xác "ngang bác sĩ", có thể khiến người dùng tin kết quả mà không đi khám; đây là nhận định của tôi. |
+| Layer bắt đầu lỗi | **Model + Safety**, phụ là **UX.** *Model:* kết quả khác nhau theo giới tính với cùng triệu chứng cho thấy hành vi mô hình không phù hợp với tác vụ triage. **Chưa đủ bằng chứng** về nguyên nhân kỹ thuật; giả thuyết của tôi là thiên lệch từ dữ liệu hoặc từ quy tắc xác suất theo giới tính. *Safety (có nguồn):* The Lancet chỉ ra hệ thống chưa được đánh giá độc lập với người dùng thật trước khi triển khai rộng. *UX (giả thuyết):* kết quả được trình bày như lời khuyên y khoa nên khó để người dùng tự kiểm tra lại. |
+| Harm xảy ra là gì? | 📌 **[Đã xảy ra, ở mức phép thử]** **Hồ sơ người dùng nữ** nhận gợi ý trầm cảm hoặc hoảng loạn thay vì bệnh tim **khi** nhập cùng triệu chứng với hồ sơ nam (Undark). **Babylon** bị khiển trách **khi** quảng cáo gây hiểu lầm. 💭 **[Nguy cơ, chưa ghi nhận]** **Phụ nữ bị nhồi máu cơ tim** có thể đi cấp cứu muộn **khi** tin vào gợi ý "trầm cảm hoặc hoảng loạn". |
+| Harm lens | **Injury** (nguy cơ bỏ lỡ cấp cứu tim mạch); phụ: **Dignity loss** (triệu chứng của nữ giới bị quy cho vấn đề tâm lý, đối xử khác biệt theo giới tính). |
+| Severity | **Critical** |
+| Scale | **High** — đánh giá của tôi. Căn cứ: symptom checker đã được dùng khoảng **1,7 triệu lượt** ở nhiều quốc gia (Undark, 12/2019). Nếu thiên lệch nằm trong mô hình thì nó lặp lại với mọi người dùng cùng nhóm. **Giới hạn:** không có số liệu về số người dùng nữ bị đau ngực. |
+| Probability | **Chưa đủ dữ liệu để đánh giá bằng tỷ lệ.** Nhận định: **Medium** — sai lệch xuất hiện trong phép thử, và The Lancet cho rằng hệ thống *có thể* kém hơn bác sĩ đáng kể khi người dùng thật tự nhập. |
+| Frequency | **Chưa đủ dữ liệu để đánh giá.** Nhận định: **Medium** — đau ngực là triệu chứng hay được tra cứu, nhưng ca nguy hiểm thật chỉ là một phần. |
+| Vì sao? | **Severity Critical:** bỏ lỡ nhồi máu cơ tim có thể gây tử vong. **Scale High:** có số lượt sử dụng lớn từ nguồn, và thiên lệch ở mức mô hình mang tính hệ thống. **Probability và Frequency** chỉ nhận định, vì không có nghiên cứu đo tỷ lệ sai trên người dùng thật. **Giới hạn:** ví dụ thiên lệch là phép thử đơn lẻ; số liệu hiệu năng 80%/81% là Babylon tự công bố. **Nguồn:** The Lancet (11/2018); Undark (12/2019). |
 
 ---
 
